@@ -1,0 +1,22 @@
+# Core scientific computing
+numpy>=1.24.0
+scipy>=1.10.0
+matplotlib>=3.7.0
+pandas>=2.0.0
+
+# Graph analysis
+networkx>=3.0
+
+# Manifold learning / dimension reduction
+scikit-learn>=1.3.0
+
+# Quantum computing (for future experiments)
+# qiskit>=0.45.0  # Uncomment when needed
+
+# Utilities
+tqdm>=4.65.0
+jsonschema>=4.17.0
+
+# Development
+pytest>=7.4.0
+black>=23.0.0

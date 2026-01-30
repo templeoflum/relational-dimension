@@ -1,0 +1,19 @@
+{
+  "experiment": "01-topology-vs-correlation",
+  "claims": [
+    {
+      "id": "example_claim",
+      "description": "Example: Paper states that average d_topo for RGG-NN is 2.0",
+      "source_file": "paper/main.tex",
+      "metric_path": "baselines.rgg_nn.d_topo_mean",
+      "expected_value": 2.0,
+      "tolerance": 0.1,
+      "comparison": "approximately_equals"
+    }
+  ],
+  "notes": [
+    "This file will be populated during documentation phase.",
+    "Every quantitative claim in prose must have an entry here.",
+    "All entries must be verifiable against output/metrics.json"
+  ]
+}

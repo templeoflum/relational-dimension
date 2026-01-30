@@ -1,0 +1,63 @@
+{
+  "experiment": "01-topology-vs-correlation",
+  "last_run": "2026-01-29T18:33:19",
+  "machine_gates": [
+    {
+      "gate_id": "test_suite",
+      "description": "All unit and integration tests pass",
+      "automated": true,
+      "status": "passed",
+      "result": "68/68 tests passed"
+    },
+    {
+      "gate_id": "experiment_execution",
+      "description": "Full test matrix runs without errors",
+      "automated": true,
+      "status": "passed",
+      "result": "150 configurations + baselines + dose-response completed"
+    },
+    {
+      "gate_id": "claims_verification",
+      "description": "All claims in claims.json match metrics.json",
+      "automated": true,
+      "status": "pending",
+      "result": "Claims not yet defined (experiment falsified)"
+    }
+  ],
+  "inspection_gates": [
+    {
+      "gate_id": "diagnostic_images",
+      "artifact_path": "output/",
+      "description": "All diagnostic PNGs render correctly, no corruption",
+      "inspection": null,
+      "file_count": 64
+    },
+    {
+      "gate_id": "report_figures",
+      "artifact_path": "reports/",
+      "description": "All analysis figures are publication-quality",
+      "inspection": null,
+      "file_count": 3
+    },
+    {
+      "gate_id": "paper_pdf",
+      "artifact_path": "paper/main.pdf",
+      "description": "Paper PDF compiles, no overflow, figures render",
+      "inspection": null,
+      "status": "compiled",
+      "pages": 7,
+      "size_bytes": 229783
+    }
+  ],
+  "experiment_result": {
+    "status": "falsified",
+    "predictions_passed": 1,
+    "predictions_total": 5,
+    "core_hypothesis": "FALSIFIED"
+  },
+  "notes": [
+    "Machine gates run automatically via verify_gates.py",
+    "Inspection gates require human/AI visual review",
+    "After inspection, record via: python scripts/verify_gates.py inspect EXPERIMENT GATE_ID"
+  ]
+}
