@@ -1,0 +1,43 @@
+{
+  "experiment": "02-scaling-laws",
+  "title": "Compression Scaling Laws",
+  "research_question": "What is the functional form of compression scaling, and does it predict behavior at unseen graph sizes?",
+  "claims": {
+    "P1": {
+      "name": "Monotonic Scaling",
+      "description": "δ increases monotonically with N for LR correlations",
+      "threshold": "Spearman correlation r(N, δ) > 0.9",
+      "rationale": "If compression is real, larger graphs = more compression"
+    },
+    "P2": {
+      "name": "Functional Form - Logarithmic",
+      "description": "δ(N) follows δ = a·log(N) + b",
+      "threshold": "R² > 0.85 for log fit",
+      "rationale": "Many geometric scaling laws are logarithmic"
+    },
+    "P3": {
+      "name": "Functional Form - Power Law",
+      "description": "δ(N) follows δ = c·N^α",
+      "threshold": "R² > 0.85 for power fit, α > 0",
+      "rationale": "Alternative hypothesis - power scaling"
+    },
+    "P4": {
+      "name": "Saturation Test",
+      "description": "Compression does NOT saturate (no plateau)",
+      "threshold": "δ(1000) > δ(500) + 0.05",
+      "rationale": "If effect is geometric, should continue growing"
+    },
+    "P5": {
+      "name": "Predictive Validity",
+      "description": "Model fitted on N ≤ 500 predicts δ(1000) within 20%",
+      "threshold": "|δ_predicted - δ_measured| / δ_measured < 0.2",
+      "rationale": "A valid scaling law should extrapolate"
+    },
+    "P6": {
+      "name": "Improved Baseline",
+      "description": "With continuous dimension estimation, baseline variance drops",
+      "threshold": "Std(δ) at N=100 < 0.15",
+      "rationale": "Validates methodological improvement"
+    }
+  }
+}

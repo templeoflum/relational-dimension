@@ -1,0 +1,53 @@
+{
+  "experiment": "02-scaling-laws",
+  "gates": [
+    {
+      "id": "G1",
+      "name": "Monotonic Check",
+      "prediction": "P1",
+      "metric": "spearman_r",
+      "operator": ">",
+      "threshold": 0.9
+    },
+    {
+      "id": "G2",
+      "name": "Log Fit Quality",
+      "prediction": "P2",
+      "metric": "log_r2",
+      "operator": ">",
+      "threshold": 0.85
+    },
+    {
+      "id": "G3",
+      "name": "Power Fit Quality",
+      "prediction": "P3",
+      "metric": "power_r2",
+      "operator": ">",
+      "threshold": 0.85
+    },
+    {
+      "id": "G4",
+      "name": "Non-Saturation",
+      "prediction": "P4",
+      "metric": "delta_1000_minus_500",
+      "operator": ">",
+      "threshold": 0.05
+    },
+    {
+      "id": "G5",
+      "name": "Prediction Error",
+      "prediction": "P5",
+      "metric": "relative_prediction_error",
+      "operator": "<",
+      "threshold": 0.2
+    },
+    {
+      "id": "G6",
+      "name": "Variance Reduction",
+      "prediction": "P6",
+      "metric": "std_delta_n100",
+      "operator": "<",
+      "threshold": 0.15
+    }
+  ]
+}
