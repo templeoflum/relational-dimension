@@ -1,0 +1,75 @@
+{
+  "experiment": "03-methodological-consistency",
+  "gates": [
+    {
+      "id": "G1",
+      "name": "Unit Tests Pass",
+      "type": "automated",
+      "command": "pytest src/tests/ -v",
+      "pass_criterion": "exit code 0",
+      "required_for": "execution"
+    },
+    {
+      "id": "G2",
+      "name": "Method Agreement Check",
+      "type": "automated",
+      "description": "MDS and Isomap dimensions agree within 0.5 for >90% of samples",
+      "source_path": "output/metrics.json",
+      "source_key": "validation.method_agreement_rate",
+      "threshold": 0.90,
+      "required_for": "analysis"
+    },
+    {
+      "id": "G3",
+      "name": "Embedding Quality Check",
+      "type": "automated",
+      "description": "Mean stress < 0.2 across all embeddings",
+      "source_path": "output/metrics.json",
+      "source_key": "validation.mean_stress",
+      "threshold": 0.20,
+      "required_for": "analysis"
+    },
+    {
+      "id": "G4",
+      "name": "Continuity Check",
+      "type": "automated",
+      "description": "No sign reversal between N=500 and N=750",
+      "source_path": "output/metrics.json",
+      "source_key": "validation.continuity_preserved",
+      "threshold": true,
+      "required_for": "analysis"
+    },
+    {
+      "id": "G5",
+      "name": "Visual Verification",
+      "type": "manual",
+      "description": "Scaling curve shows expected trend, no artifacts",
+      "artifacts": [
+        "reports/scaling_curve.png",
+        "reports/method_comparison.png",
+        "reports/residuals.png",
+        "reports/predictions_summary.png"
+      ],
+      "required_for": "paper"
+    },
+    {
+      "id": "G6",
+      "name": "Paper Compilation",
+      "type": "automated",
+      "command": "pdflatex main.tex",
+      "pass_criterion": "exit code 0, PDF generated",
+      "required_for": "publication"
+    },
+    {
+      "id": "G7",
+      "name": "Paper Visual Verification",
+      "type": "manual",
+      "description": "PDF is well-formatted, figures render correctly, no LaTeX errors visible",
+      "artifacts": [
+        "paper/main.pdf"
+      ],
+      "required_for": "publication"
+    }
+  ],
+  "execution_order": ["G1", "G2", "G3", "G4", "G5", "G6", "G7"]
+}

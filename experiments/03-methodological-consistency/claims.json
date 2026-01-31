@@ -1,0 +1,73 @@
+{
+  "experiment": "03-methodological-consistency",
+  "title": "Methodological Consistency and Robust Scaling",
+  "created": "2026-01-30",
+  "predictions": [
+    {
+      "id": "P1",
+      "description": "Monotonic Scaling",
+      "claim": "Compression ratio increases monotonically with graph size N across full range",
+      "metric": "spearman_correlation",
+      "threshold": 0.85,
+      "threshold_type": "greater_than",
+      "source_path": "output/metrics.json",
+      "source_key": "predictions.P1.measured"
+    },
+    {
+      "id": "P2",
+      "description": "Logarithmic Scaling",
+      "claim": "Compression follows logarithmic form: delta = a*log(N) + b",
+      "metric": "r_squared",
+      "threshold": 0.80,
+      "threshold_type": "greater_than",
+      "source_path": "output/metrics.json",
+      "source_key": "predictions.P2.measured"
+    },
+    {
+      "id": "P3",
+      "description": "Method Consistency",
+      "claim": "No discontinuity between N=500 and N=750 with full methods",
+      "metric": "absolute_difference",
+      "threshold": 0.15,
+      "threshold_type": "less_than",
+      "source_path": "output/metrics.json",
+      "source_key": "predictions.P3.measured"
+    },
+    {
+      "id": "P4",
+      "description": "Predictive Validity",
+      "claim": "Model trained on N <= 500 predicts N=1000 within 30%",
+      "metric": "relative_error",
+      "threshold": 0.30,
+      "threshold_type": "less_than",
+      "source_path": "output/metrics.json",
+      "source_key": "predictions.P4.measured"
+    },
+    {
+      "id": "P5",
+      "description": "Non-Saturation",
+      "claim": "Compression continues growing: delta(1000) > delta(500)",
+      "metric": "difference",
+      "threshold": 0.0,
+      "threshold_type": "greater_than",
+      "source_path": "output/metrics.json",
+      "source_key": "predictions.P5.measured"
+    },
+    {
+      "id": "P6",
+      "description": "Variance Reduction",
+      "claim": "Increased replications reduce standard error at N=100",
+      "metric": "standard_error",
+      "threshold": 0.05,
+      "threshold_type": "less_than",
+      "source_path": "output/metrics.json",
+      "source_key": "predictions.P6.measured"
+    }
+  ],
+  "success_criteria": {
+    "full_success": "6/6 predictions pass",
+    "strong_success": "5/6 predictions pass",
+    "partial_success": "4/6 predictions pass",
+    "failure": "0-1/6 predictions pass"
+  }
+}
