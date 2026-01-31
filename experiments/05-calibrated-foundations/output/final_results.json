@@ -1,0 +1,91 @@
+{
+  "experiment": "05-calibrated-foundations",
+  "timestamp": "2026-01-31T00:40:03.994115",
+  "phases": {
+    "phase1": {
+      "status": "passed",
+      "gates": {
+        "c1_2d_calibration": true,
+        "c2_3d_calibration": true,
+        "c3_1d_calibration": true,
+        "c4_method_agreement": true,
+        "c5_reproducibility": true,
+        "all_passed": true,
+        "details": {
+          "c1_delta_2d": -0.021484199204556638,
+          "c2_delta_3d": 0.021346015073161678,
+          "c3_delta_1d": 0.0,
+          "c4_max_method_diff": 0.10687406600002824,
+          "c5_max_std": 0.0,
+          "thresholds": {
+            "delta": 0.1,
+            "method": 0.3,
+            "std": 0.05
+          }
+        }
+      },
+      "best_transform": "linear"
+    },
+    "phase2": {
+      "status": "completed",
+      "predictions": {
+        "P2.1": {
+          "description": "Global boost creates compression",
+          "threshold": "delta > 0.1",
+          "measured": -0.021484199204556638,
+          "passed": false
+        },
+        "P2.2": {
+          "description": "Noise control shows no compression",
+          "threshold": "|delta| < 0.05",
+          "measured": -0.07386009300927472,
+          "passed": false
+        },
+        "P2.3": {
+          "description": "Distance-decay creates compression",
+          "threshold": "delta > 0.05",
+          "measured": -0.019142451304893046,
+          "passed": false
+        },
+        "P2.4": {
+          "description": "Effect ordering: boost > decay > noise",
+          "threshold": "boost > decay > noise",
+          "measured": {
+            "boost": -0.021484199204556638,
+            "decay": -0.019142451304893046,
+            "noise": -0.07386009300927472
+          },
+          "passed": false
+        }
+      },
+      "passed_count": 0
+    },
+    "phase3": {
+      "status": "completed",
+      "predictions": {
+        "P3.1": {
+          "description": "Effect size measurable",
+          "threshold": "Cohen's d > 0.3",
+          "measured": 18.41735806803015,
+          "passed": true
+        },
+        "P3.2": {
+          "description": "Reasonable sample size",
+          "threshold": "N < 100 for power=0.8",
+          "measured": 1,
+          "passed": true
+        }
+      },
+      "main_effect_size": 18.41735806803015,
+      "n_required_power80": 1
+    }
+  },
+  "final_status": "partial_success",
+  "summary": {
+    "total_predictions": 11,
+    "total_passed": 7,
+    "phase1_passed": true,
+    "phase2_passed": 0,
+    "phase3_passed": 2
+  }
+}

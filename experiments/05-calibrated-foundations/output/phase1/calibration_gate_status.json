@@ -1,0 +1,20 @@
+{
+  "c1_2d_calibration": true,
+  "c2_3d_calibration": true,
+  "c3_1d_calibration": true,
+  "c4_method_agreement": true,
+  "c5_reproducibility": true,
+  "all_passed": true,
+  "details": {
+    "c1_delta_2d": -0.021484199204556638,
+    "c2_delta_3d": 0.021346015073161678,
+    "c3_delta_1d": 0.0,
+    "c4_max_method_diff": 0.10687406600002824,
+    "c5_max_std": 0.0,
+    "thresholds": {
+      "delta": 0.1,
+      "method": 0.3,
+      "std": 0.05
+    }
+  }
+}

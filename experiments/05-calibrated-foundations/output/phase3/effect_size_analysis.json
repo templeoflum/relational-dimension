@@ -1,0 +1,75 @@
+{
+  "d_boost_vs_noise": 17.629151408719608,
+  "d_decay_vs_noise": 18.41735806803015,
+  "d_boost": 0.0,
+  "main_effect_size": 18.41735806803015,
+  "n_required_power80": 1,
+  "power_curve": {
+    "n_values": [
+      10,
+      20,
+      30,
+      50,
+      75,
+      100,
+      150,
+      200
+    ],
+    "power_values": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "effect_size": 18.41735806803015,
+    "alpha": 0.05
+  },
+  "confidence_intervals": {
+    "baseline": {
+      "mean": -0.021484199204556638,
+      "ci_95": [
+        -0.021484199204556638,
+        -0.021484199204556638
+      ]
+    },
+    "boost": {
+      "mean": -0.021484199204556638,
+      "ci_95": [
+        -0.021484199204556638,
+        -0.021484199204556638
+      ]
+    },
+    "noise": {
+      "mean": -0.07386009300927472,
+      "ci_95": [
+        -0.07496534194352801,
+        -0.07268751105083579
+      ]
+    },
+    "decay": {
+      "mean": -0.019142451304893046,
+      "ci_95": [
+        -0.019142451304893046,
+        -0.019142451304893046
+      ]
+    }
+  },
+  "predictions": {
+    "P3.1": {
+      "description": "Effect size measurable",
+      "threshold": "Cohen's d > 0.3",
+      "measured": 18.41735806803015,
+      "passed": true
+    },
+    "P3.2": {
+      "description": "Reasonable sample size",
+      "threshold": "N < 100 for power=0.8",
+      "measured": 1,
+      "passed": true
+    }
+  }
+}
