@@ -1,0 +1,86 @@
+{
+  "experiment": "04-quantum-mutual-information",
+  "gates": [
+    {
+      "id": "G1",
+      "name": "Unit Tests Pass",
+      "type": "automated",
+      "command": "pytest src/tests/ -v",
+      "pass_criterion": "exit code 0",
+      "required_for": "execution"
+    },
+    {
+      "id": "G2",
+      "name": "Product State Sanity Check",
+      "type": "automated",
+      "description": "All MI values for product states should be < 0.01",
+      "source_path": "output/metrics.json",
+      "source_key": "validation.product_state_max_mi",
+      "threshold": 0.01,
+      "required_for": "analysis"
+    },
+    {
+      "id": "G3",
+      "name": "Pure State Entropy Check",
+      "type": "automated",
+      "description": "S(rho_full) should be < 0.01 for pure states",
+      "source_path": "output/metrics.json",
+      "source_key": "validation.max_pure_state_entropy",
+      "threshold": 0.01,
+      "required_for": "analysis"
+    },
+    {
+      "id": "G4",
+      "name": "MI Positivity Check",
+      "type": "automated",
+      "description": "All MI values should be >= -0.001 (allowing numerical error)",
+      "source_path": "output/metrics.json",
+      "source_key": "validation.min_mi_value",
+      "threshold": -0.001,
+      "required_for": "analysis"
+    },
+    {
+      "id": "G5",
+      "name": "GHZ Known Value Check",
+      "type": "automated",
+      "description": "GHZ state MI should be approximately 1 bit for all pairs",
+      "source_path": "output/metrics.json",
+      "source_key": "validation.ghz_mi_mean",
+      "threshold_min": 0.9,
+      "threshold_max": 1.1,
+      "required_for": "analysis"
+    },
+    {
+      "id": "G6",
+      "name": "Visual Verification",
+      "type": "manual",
+      "description": "MI heatmaps show expected patterns for different states",
+      "artifacts": [
+        "reports/mi_heatmaps.png",
+        "reports/compression_by_state.png",
+        "reports/entanglement_correlation.png",
+        "reports/predictions_summary.png"
+      ],
+      "required_for": "paper"
+    },
+    {
+      "id": "G7",
+      "name": "Paper Compilation",
+      "type": "automated",
+      "command": "pdflatex main.tex",
+      "pass_criterion": "exit code 0, PDF generated",
+      "required_for": "publication"
+    },
+    {
+      "id": "G8",
+      "name": "Paper Visual Verification",
+      "type": "manual",
+      "description": "PDF is well-formatted, figures render correctly",
+      "artifacts": [
+        "paper/main.pdf"
+      ],
+      "required_for": "publication"
+    }
+  ],
+  "execution_order": ["G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8"]
+}

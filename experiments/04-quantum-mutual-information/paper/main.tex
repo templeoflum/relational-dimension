@@ -1,0 +1,220 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\title{Experiment 04: Quantum Mutual Information and Dimensional Compression}
+\author{Relational Dimension Project}
+\date{January 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We investigate whether quantum entanglement creates dimensional compression measurable via mutual information geometry. Using exact density matrix simulations of various quantum states (product, GHZ, W, cluster, and Haar random) with up to 12 qubits, we compute pairwise quantum mutual information matrices and extract effective dimensions using MDS and Isomap. Our results reveal that uniform correlation patterns---whether from zero entanglement (product states) or maximal global entanglement (GHZ states)---collapse to one-dimensional embeddings, while states with spatially structured correlations (cluster, random) show higher effective dimensions. Three of six pre-registered predictions passed, with GHZ compression ($\delta = 0.82 > 0.4$), random state compression ($\delta = 0.47 > 0.25$), and 2D holographic prediction ($d_Q = 1.0 < 1.5$) confirmed.
+\end{abstract}
+
+\section{Introduction}
+
+The relational dimension framework proposes that physical dimensions emerge from correlation structure among elementary constituents. Previous experiments tested this with classical correlation proxies; this experiment marks the first application to genuine quantum systems.
+
+Quantum mutual information provides a natural measure of correlations that captures both classical and quantum correlations:
+\begin{equation}
+I(A:B) = S(\rho_A) + S(\rho_B) - S(\rho_{AB})
+\end{equation}
+where $S(\rho) = -\text{Tr}(\rho \log_2 \rho)$ is the von Neumann entropy.
+
+\subsection{Research Question}
+
+Does quantum entanglement create dimensional compression measurable via mutual information geometry?
+
+\section{Methods}
+
+\subsection{Quantum States}
+
+We tested five classes of quantum states:
+
+\begin{enumerate}
+    \item \textbf{Product State} $|0\rangle^{\otimes N}$: No entanglement baseline
+    \item \textbf{GHZ State} $(|0\rangle^{\otimes N} + |1\rangle^{\otimes N})/\sqrt{2}$: Maximal global entanglement
+    \item \textbf{W State} $(|10...0\rangle + |01...0\rangle + ... + |0...01\rangle)/\sqrt{N}$: Symmetric entanglement
+    \item \textbf{Cluster State}: Topological entanglement via CZ gates on $|+\rangle^{\otimes N}$
+    \item \textbf{Haar Random}: Typical highly entangled states
+\end{enumerate}
+
+\subsection{Computational Approach}
+
+For $N$ qubits, the density matrix has dimension $2^N \times 2^N$. We computed:
+
+\begin{enumerate}
+    \item Reduced density matrices via partial trace
+    \item Von Neumann entropy for each subsystem
+    \item Pairwise mutual information matrix ($N \times N$)
+    \item Distance matrix: $D_{ij} = \sqrt{2(S_{max} - I(i:j))}$
+    \item Effective dimension via MDS and Isomap
+\end{enumerate}
+
+The compression ratio is defined as:
+\begin{equation}
+\delta = \frac{d_{topo} - d_Q}{d_{topo}}
+\end{equation}
+where $d_{topo} = N-1$ for a chain geometry.
+
+\subsection{Test Matrix}
+
+We tested $N \in \{4, 6, 8, 10, 12\}$ qubits with chain geometry, plus 2D grid configurations (2$\times$4, 3$\times$3, 3$\times$4) for cluster states. Random states used 5 independent seeds per configuration.
+
+\section{Results}
+
+\subsection{Mutual Information Patterns}
+
+Figure \ref{fig:mi_heatmaps} shows MI matrices for different state types at $N=8$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../reports/mi_heatmaps.png}
+    \caption{Mutual information matrices for different quantum states ($N=8$, chain geometry). Product, GHZ, and W states show uniform MI patterns, while cluster and random states show spatially varying structure.}
+    \label{fig:mi_heatmaps}
+\end{figure}
+
+\subsection{Key Finding: Uniform Correlations Collapse to 1D}
+
+A surprising result emerged: both product states (MI $\approx 0$ for all pairs) and GHZ states (MI $= 1$ for all pairs) yield $d_Q = 1$. This occurs because:
+
+\begin{itemize}
+    \item Uniform MI $\Rightarrow$ Uniform distances
+    \item Uniform distances embed trivially in 1D
+\end{itemize}
+
+This means compression ($\delta > 0$) does not distinguish between zero entanglement and maximal global entanglement---both produce degenerate distance matrices.
+
+\subsection{Compression by State Type}
+
+Figure \ref{fig:compression} shows compression ratios across state types and system sizes.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../reports/compression_by_state.png}
+    \caption{Dimensional compression by quantum state type. Product, GHZ, and W states cluster near $\delta \approx 0.7$--$0.9$ due to uniform MI patterns. Cluster and random states show moderate compression with spatially structured MI.}
+    \label{fig:compression}
+\end{figure}
+
+\subsection{Entanglement vs Compression Correlation}
+
+Figure \ref{fig:correlation} shows the relationship between half-chain entanglement entropy and compression.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../reports/entanglement_correlation.png}
+    \caption{Half-chain entanglement entropy vs compression ratio. The negative correlation ($r = -0.53$) indicates that higher entanglement does not necessarily produce more compression; spatial structure matters more than entanglement magnitude.}
+    \label{fig:correlation}
+\end{figure}
+
+\subsection{Prediction Results}
+
+Table \ref{tab:predictions} summarizes the pre-registered predictions.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{llrrl}
+        \toprule
+        ID & Prediction & Threshold & Measured & Status \\
+        \midrule
+        P1 & Product State Baseline & $|\delta| < 0.1$ & 0.889 & FAIL \\
+        P2 & GHZ Compression & $\delta > 0.4$ & 0.824 & PASS \\
+        P3 & Cluster State Topology & $d_Q < 1.5$ & 3.536 & FAIL \\
+        P4 & Random State Compression & $\delta > 0.25$ & 0.472 & PASS \\
+        P5 & Entanglement-Compression Correlation & $r > 0.7$ & $-0.526$ & FAIL \\
+        P6 & 2D Holographic Prediction & $d_Q < 1.5$ & 1.000 & PASS \\
+        \bottomrule
+    \end{tabular}
+    \caption{Prediction results (3/6 passed).}
+    \label{tab:predictions}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../reports/predictions_summary.png}
+    \caption{Visual summary of prediction results.}
+    \label{fig:predictions}
+\end{figure}
+
+\section{Discussion}
+
+\subsection{Interpretation of Results}
+
+The key insight from this experiment is that \textbf{correlation uniformity}, not entanglement magnitude, determines dimensional collapse. Both product states (zero entanglement) and GHZ states (maximal entanglement) produce uniform pairwise correlations, leading to degenerate distance matrices that embed in 1D.
+
+States with \textbf{spatially varying} correlation structure---cluster states and random states---show more complex dimensional behavior:
+
+\begin{itemize}
+    \item Cluster states: MI varies by neighbor distance, leading to $d_Q \approx 3$--6
+    \item Random states: Non-uniform MI structure, $d_Q \approx 2$--6
+\end{itemize}
+
+\subsection{P1 Failure Analysis}
+
+The P1 prediction assumed product states would show $|\delta| < 0.1$ (no compression). However, zero MI produces uniform distances, which embed in 1D regardless of the topological dimension. This reveals that the compression measure is sensitive to MI \emph{uniformity}, not MI \emph{magnitude}.
+
+\subsection{P5 Failure Analysis}
+
+We predicted positive correlation between entanglement and compression ($r > 0.7$). Instead, we found negative correlation ($r = -0.53$). This occurs because:
+
+\begin{itemize}
+    \item High entanglement (GHZ, W) $\Rightarrow$ Uniform MI $\Rightarrow$ Low $d_Q$ $\Rightarrow$ High $\delta$
+    \item Moderate entanglement with structure $\Rightarrow$ Varying MI $\Rightarrow$ Higher $d_Q$ $\Rightarrow$ Lower $\delta$
+\end{itemize}
+
+\subsection{Implications for Relational Dimension Theory}
+
+This experiment suggests that dimensional emergence from correlations depends on correlation \emph{heterogeneity}:
+
+\begin{enumerate}
+    \item Uniform correlations (regardless of magnitude) $\Rightarrow$ Degenerate geometry
+    \item Spatially structured correlations $\Rightarrow$ Non-trivial dimensional structure
+\end{enumerate}
+
+Physical spacetime presumably has spatially varying correlations, which would support higher-dimensional emergence.
+
+\section{Conclusions}
+
+We tested dimensional compression in genuine quantum systems. Three of six predictions passed:
+
+\begin{itemize}
+    \item \textbf{P2 (PASS)}: GHZ states show compression $\delta = 0.82 > 0.4$
+    \item \textbf{P4 (PASS)}: Random states show compression $\delta = 0.47 > 0.25$
+    \item \textbf{P6 (PASS)}: 2D cluster states show $d_Q = 1.0 < 1.5$
+\end{itemize}
+
+The main discovery is that MI uniformity, not entanglement magnitude, determines dimensional collapse. Future work should investigate correlation heterogeneity measures and their relationship to emergent dimensionality.
+
+\section*{Appendix: Computational Details}
+
+\subsection*{Memory Requirements}
+
+Density matrix: $2^{2N} \times 16$ bytes (complex128)
+\begin{itemize}
+    \item $N=8$: 1 MB
+    \item $N=10$: 16 MB
+    \item $N=12$: 256 MB
+\end{itemize}
+
+\subsection*{Validation Gates}
+
+\begin{itemize}
+    \item G1: Unit tests pass (55/55)
+    \item G2: Product state max MI $< 0.01$ (PASS)
+    \item G3: Pure state entropy $< 0.01$ (PASS)
+    \item G4: MI positivity (PASS)
+    \item G5: GHZ MI mean $\approx 1$ (PASS)
+\end{itemize}
+
+\end{document}

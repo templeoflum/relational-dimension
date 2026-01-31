@@ -1,0 +1,2423 @@
+{
+  "experiment": "04-quantum-mutual-information",
+  "timestamp": "2026-01-30T22:47:06.548758",
+  "test_matrix": [
+    {
+      "n_qubits": 4,
+      "geometry": "chain",
+      "states": [
+        "product",
+        "ghz",
+        "w",
+        "cluster",
+        "random"
+      ]
+    },
+    {
+      "n_qubits": 6,
+      "geometry": "chain",
+      "states": [
+        "product",
+        "ghz",
+        "w",
+        "cluster",
+        "random"
+      ]
+    },
+    {
+      "n_qubits": 8,
+      "geometry": "chain",
+      "states": [
+        "product",
+        "ghz",
+        "w",
+        "cluster",
+        "random"
+      ]
+    },
+    {
+      "n_qubits": 8,
+      "geometry": "2x4",
+      "states": [
+        "cluster"
+      ]
+    },
+    {
+      "n_qubits": 9,
+      "geometry": "3x3",
+      "states": [
+        "cluster"
+      ]
+    },
+    {
+      "n_qubits": 10,
+      "geometry": "chain",
+      "states": [
+        "product",
+        "ghz",
+        "w",
+        "cluster",
+        "random"
+      ]
+    },
+    {
+      "n_qubits": 12,
+      "geometry": "chain",
+      "states": [
+        "ghz",
+        "cluster",
+        "random"
+      ]
+    },
+    {
+      "n_qubits": 12,
+      "geometry": "3x4",
+      "states": [
+        "cluster"
+      ]
+    }
+  ],
+  "n_random_seeds": 5,
+  "results": [
+    {
+      "state_name": "product",
+      "n_qubits": 4,
+      "geometry": "chain",
+      "seed": null,
+      "entanglement_type": "none",
+      "S_ent": -0.0,
+      "purity": 1.0,
+      "d_topo": 3,
+      "d_mds": 1.0,
+      "d_isomap": 1.0,
+      "d_quantum": 1.0,
+      "delta": 0.6666666666666666,
+      "mi_mean": 0.0,
+      "mi_max": 0.0,
+      "mi_min": 0.0,
+      "mds_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "isomap_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.0,
+        "mean_value": 0.0
+      }
+    },
+    {
+      "state_name": "ghz",
+      "n_qubits": 4,
+      "geometry": "chain",
+      "seed": null,
+      "entanglement_type": "global",
+      "S_ent": 1.0,
+      "purity": 0.9999999999999996,
+      "d_topo": 3,
+      "d_mds": 1.0,
+      "d_isomap": 1.0,
+      "d_quantum": 1.0,
+      "delta": 0.6666666666666666,
+      "mi_mean": 1.0,
+      "mi_max": 1.0,
+      "mi_min": 1.0,
+      "mds_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "isomap_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 1.0,
+        "mean_value": 1.0
+      }
+    },
+    {
+      "state_name": "w",
+      "n_qubits": 4,
+      "geometry": "chain",
+      "seed": null,
+      "entanglement_type": "symmetric",
+      "S_ent": 1.0,
+      "purity": 1.0,
+      "d_topo": 3,
+      "d_mds": 1.0,
+      "d_isomap": 1.0,
+      "d_quantum": 1.0,
+      "delta": 0.6666666666666666,
+      "mi_mean": 0.6225562489182658,
+      "mi_max": 0.6225562489182657,
+      "mi_min": 0.6225562489182657,
+      "mds_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "isomap_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.6225562489182657,
+        "mean_value": 0.6225562489182658
+      }
+    },
+    {
+      "state_name": "cluster",
+      "n_qubits": 4,
+      "geometry": "chain",
+      "seed": null,
+      "entanglement_type": "topological_1d",
+      "S_ent": 1.0000000000000002,
+      "purity": 0.9999999999999986,
+      "d_topo": 3,
+      "d_mds": 1.0,
+      "d_isomap": 1.0,
+      "d_quantum": 1.0,
+      "delta": 0.6666666666666666,
+      "mi_mean": 0.333333333333334,
+      "mi_max": 1.0000000000000002,
+      "mi_min": 8.881784197001252e-16,
+      "mds_details": {
+        "explained_variances": [
+          1,
+          0.9999999145658779,
+          0.9999999012975259
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 0.9999999012975259
+      },
+      "isomap_details": {
+        "explained_variances": [
+          1,
+          1
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 1.0000000000000002,
+        "mean_value": 0.333333333333334
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 4,
+      "geometry": "chain",
+      "seed": 0,
+      "entanglement_type": "random",
+      "S_ent": 1.0342630906895982,
+      "purity": 0.9999999999999999,
+      "d_topo": 3,
+      "d_mds": 1.0,
+      "d_isomap": 1.6311532157858886,
+      "d_quantum": 1.3155766078929443,
+      "delta": 0.5614744640356852,
+      "mi_mean": 0.3611579875558162,
+      "mi_max": 0.6433963197420178,
+      "mi_min": 0.13758819974802483,
+      "mds_details": {
+        "explained_variances": [
+          0.916391352651345,
+          0.9902280797247778,
+          0.9999995205973286
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 0.9999995205973286
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.8382363620635942,
+          0.9360947526914547
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.6311532157858886,
+        "final_variance": 0.9360947526914547
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.6433963197420178,
+        "mean_value": 0.3611579875558162
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 4,
+      "geometry": "chain",
+      "seed": 1,
+      "entanglement_type": "random",
+      "S_ent": 1.105712158654318,
+      "purity": 0.9999999999999996,
+      "d_topo": 3,
+      "d_mds": 1.469698650772929,
+      "d_isomap": 1.4667580966116343,
+      "d_quantum": 1.4682283736922817,
+      "delta": 0.5105905421025728,
+      "mi_mean": 0.37394409093036557,
+      "mi_max": 0.536669477537169,
+      "mi_min": 0.12174263395591134,
+      "mds_details": {
+        "explained_variances": [
+          0.8215865237849834,
+          0.9885307466095127,
+          0.9999992000791731
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.469698650772929,
+        "final_variance": 0.9999992000791731
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.8367857647485712,
+          0.9722183061663286
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.4667580966116343,
+        "final_variance": 0.9722183061663286
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.536669477537169,
+        "mean_value": 0.37394409093036557
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 4,
+      "geometry": "chain",
+      "seed": 2,
+      "entanglement_type": "random",
+      "S_ent": 1.3760224584465768,
+      "purity": 0.9999999999999998,
+      "d_topo": 3,
+      "d_mds": 1.3592295537075878,
+      "d_isomap": 1.7076268449094913,
+      "d_quantum": 1.5334281993085397,
+      "delta": 0.4888572668971534,
+      "mi_mean": 0.4339732315664378,
+      "mi_max": 0.5466136284556411,
+      "mi_min": 0.32905601182734356,
+      "mds_details": {
+        "explained_variances": [
+          0.8512999758925193,
+          0.9868679535403786,
+          0.9999986120314336
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.3592295537075878,
+        "final_variance": 0.9999986120314336
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.7317894561622991,
+          0.9695002567739065
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.7076268449094913,
+        "final_variance": 0.9695002567739065
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.5466136284556411,
+        "mean_value": 0.4339732315664378
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 4,
+      "geometry": "chain",
+      "seed": 3,
+      "entanglement_type": "random",
+      "S_ent": 1.400472018449042,
+      "purity": 0.9999999999999998,
+      "d_topo": 3,
+      "d_mds": 1.2625225735876615,
+      "d_isomap": 2.027327279155684,
+      "d_quantum": 1.6449249263716728,
+      "delta": 0.4516916912094424,
+      "mi_mean": 0.3762125811143097,
+      "mi_max": 0.5459393375402266,
+      "mi_min": 0.29468422120954085,
+      "mds_details": {
+        "explained_variances": [
+          0.8702164352129189,
+          0.9836678781881104,
+          0.9999995345882723
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.2625225735876615,
+        "final_variance": 0.9999995345882723
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.7247523225006125,
+          0.8953383480594939
+        ],
+        "d_threshold": 2,
+        "d_continuous": 2.027327279155684,
+        "final_variance": 0.8953383480594939
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.5459393375402266,
+        "mean_value": 0.3762125811143097
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 4,
+      "geometry": "chain",
+      "seed": 4,
+      "entanglement_type": "random",
+      "S_ent": 1.5487938520946716,
+      "purity": 0.9999999999999993,
+      "d_topo": 3,
+      "d_mds": 1.3499407212259034,
+      "d_isomap": 1.7422565190880959,
+      "d_quantum": 1.5460986201569997,
+      "delta": 0.4846337932810001,
+      "mi_mean": 0.3462957519211087,
+      "mi_max": 0.46763615984468454,
+      "mi_min": 0.2530791829971353,
+      "mds_details": {
+        "explained_variances": [
+          0.8542001254310034,
+          0.9850790766103679,
+          0.9999987286893208
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.3499407212259034,
+        "final_variance": 0.9999987286893208
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.7102305537374717,
+          0.9658961375112199
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.7422565190880959,
+        "final_variance": 0.9658961375112199
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.46763615984468454,
+        "mean_value": 0.3462957519211087
+      }
+    },
+    {
+      "state_name": "product",
+      "n_qubits": 6,
+      "geometry": "chain",
+      "seed": null,
+      "entanglement_type": "none",
+      "S_ent": -0.0,
+      "purity": 1.0,
+      "d_topo": 5,
+      "d_mds": 1.0,
+      "d_isomap": 1.0,
+      "d_quantum": 1.0,
+      "delta": 0.8,
+      "mi_mean": 0.0,
+      "mi_max": 0.0,
+      "mi_min": 0.0,
+      "mds_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "isomap_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.0,
+        "mean_value": 0.0
+      }
+    },
+    {
+      "state_name": "ghz",
+      "n_qubits": 6,
+      "geometry": "chain",
+      "seed": null,
+      "entanglement_type": "global",
+      "S_ent": 1.0,
+      "purity": 0.9999999999999996,
+      "d_topo": 5,
+      "d_mds": 1.0,
+      "d_isomap": 1.0,
+      "d_quantum": 1.0,
+      "delta": 0.8,
+      "mi_mean": 1.0,
+      "mi_max": 1.0,
+      "mi_min": 1.0,
+      "mds_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "isomap_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 1.0,
+        "mean_value": 1.0
+      }
+    },
+    {
+      "state_name": "w",
+      "n_qubits": 6,
+      "geometry": "chain",
+      "seed": null,
+      "entanglement_type": "symmetric",
+      "S_ent": 0.9999999999999999,
+      "purity": 1.0000000000000007,
+      "d_topo": 5,
+      "d_mds": 1.0,
+      "d_isomap": 1.0,
+      "d_quantum": 1.0,
+      "delta": 0.8,
+      "mi_mean": 0.38174900924221855,
+      "mi_max": 0.38174900924221844,
+      "mi_min": 0.38174900924221844,
+      "mds_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "isomap_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.38174900924221844,
+        "mean_value": 0.38174900924221855
+      }
+    },
+    {
+      "state_name": "cluster",
+      "n_qubits": 6,
+      "geometry": "chain",
+      "seed": null,
+      "entanglement_type": "topological_1d",
+      "S_ent": 1.0000000000000004,
+      "purity": 0.9999999999999999,
+      "d_topo": 5,
+      "d_mds": 1.6737385138617185,
+      "d_isomap": 1.9157477236135216,
+      "d_quantum": 1.7947431187376202,
+      "delta": 0.641051376252476,
+      "mi_mean": 0.1333333333333337,
+      "mi_max": 0.9999999999999998,
+      "mi_min": 4.440892098500626e-16,
+      "mds_details": {
+        "explained_variances": [
+          0.7435897451180679,
+          0.9757425041839309,
+          0.9999990694598788,
+          0.9999990187186606,
+          0.9999990551776547
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.6737385138617185,
+        "final_variance": 0.9999990551776547
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.7692307692307694,
+          0.9120312670067485,
+          1,
+          1
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.9157477236135216,
+        "final_variance": 1
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.9999999999999998,
+        "mean_value": 0.1333333333333337
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 6,
+      "geometry": "chain",
+      "seed": 0,
+      "entanglement_type": "random",
+      "S_ent": 2.248382929551492,
+      "purity": 0.9999999999999992,
+      "d_topo": 5,
+      "d_mds": 1.7782815298062515,
+      "d_isomap": 2.6847564047282058,
+      "d_quantum": 2.2315189672672284,
+      "delta": 0.5536962065465543,
+      "mi_mean": 0.09507578377939904,
+      "mi_max": 0.1737043102664202,
+      "mi_min": 0.031992331121781126,
+      "mds_details": {
+        "explained_variances": [
+          0.7857184582185658,
+          0.9325567646728946,
+          0.9785553507576583,
+          0.9921533782343815,
+          0.9999982023602598
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.7782815298062515,
+        "final_variance": 0.9999982023602598
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.5778318561817601,
+          0.8267951206425627,
+          0.9337015750429328,
+          0.9789658705027102
+        ],
+        "d_threshold": 3,
+        "d_continuous": 2.6847564047282058,
+        "final_variance": 0.9789658705027102
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.1737043102664202,
+        "mean_value": 0.09507578377939904
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 6,
+      "geometry": "chain",
+      "seed": 1,
+      "entanglement_type": "random",
+      "S_ent": 2.228821285997205,
+      "purity": 1.0,
+      "d_topo": 5,
+      "d_mds": 1.7660361935729862,
+      "d_isomap": 2.7609378728699228,
+      "d_quantum": 2.2634870332214545,
+      "delta": 0.5473025933557091,
+      "mi_mean": 0.09498410591905457,
+      "mi_max": 0.23329895719490068,
+      "mi_min": 0.041892218723593944,
+      "mds_details": {
+        "explained_variances": [
+          0.7776238565541921,
+          0.9373762866254328,
+          0.9782576109444556,
+          0.9923690285874593,
+          0.9999983227178083
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.7660361935729862,
+        "final_variance": 0.9999983227178083
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.5406723990042832,
+          0.8220740353674285,
+          0.9244818237177035,
+          0.9560961405053723
+        ],
+        "d_threshold": 3,
+        "d_continuous": 2.7609378728699228,
+        "final_variance": 0.9560961405053723
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.23329895719490068,
+        "mean_value": 0.09498410591905457
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 6,
+      "geometry": "chain",
+      "seed": 2,
+      "entanglement_type": "random",
+      "S_ent": 2.3194892675454737,
+      "purity": 1.0,
+      "d_topo": 5,
+      "d_mds": 1.7906665993863484,
+      "d_isomap": 2.7584045968506383,
+      "d_quantum": 2.2745355981184936,
+      "delta": 0.5450928803763013,
+      "mi_mean": 0.10036643815230972,
+      "mi_max": 0.24779290554639988,
+      "mi_min": 0.047725926381597894,
+      "mds_details": {
+        "explained_variances": [
+          0.7843100769275451,
+          0.9306295536352296,
+          0.9801567345326098,
+          0.992325067704508,
+          0.9999984882126788
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.7906665993863484,
+        "final_variance": 0.9999984882126788
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.5941805928497241,
+          0.8212966660472109,
+          0.9250715301232116,
+          0.9737636932113157
+        ],
+        "d_threshold": 3,
+        "d_continuous": 2.7584045968506383,
+        "final_variance": 0.9737636932113157
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.24779290554639988,
+        "mean_value": 0.10036643815230972
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 6,
+      "geometry": "chain",
+      "seed": 3,
+      "entanglement_type": "random",
+      "S_ent": 2.3057917251995517,
+      "purity": 1.0,
+      "d_topo": 5,
+      "d_mds": 1.8039605456639913,
+      "d_isomap": 2.720760679895935,
+      "d_quantum": 2.262360612779963,
+      "delta": 0.5475278774440074,
+      "mi_mean": 0.08123593346158145,
+      "mi_max": 0.10879575840638323,
+      "mi_min": 0.013153787748597434,
+      "mds_details": {
+        "explained_variances": [
+          0.7785623416902525,
+          0.9296116176338277,
+          0.9768636069652226,
+          0.9906570451965037,
+          0.9999981452921145
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.8039605456639913,
+        "final_variance": 0.9999981452921145
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.5801464966985388,
+          0.815926971534401,
+          0.9325718313479769,
+          0.9777837817335197
+        ],
+        "d_threshold": 3,
+        "d_continuous": 2.720760679895935,
+        "final_variance": 0.9777837817335197
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.10879575840638323,
+        "mean_value": 0.08123593346158145
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 6,
+      "geometry": "chain",
+      "seed": 4,
+      "entanglement_type": "random",
+      "S_ent": 2.4190055507378645,
+      "purity": 0.9999999999999998,
+      "d_topo": 5,
+      "d_mds": 1.7997818415853593,
+      "d_isomap": 2.730230260293279,
+      "d_quantum": 2.265006050939319,
+      "delta": 0.5469987898121362,
+      "mi_mean": 0.07995418522801657,
+      "mi_max": 0.14569997661783196,
+      "mi_min": 0.0314009529283954,
+      "mds_details": {
+        "explained_variances": [
+          0.7843547663184357,
+          0.9289507394557199,
+          0.9780887863531269,
+          0.9914066546984122,
+          0.9999983416088362
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.7997818415853593,
+        "final_variance": 0.9999983416088362
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.5774003377072549,
+          0.8055339898264208,
+          0.9348986783503382,
+          0.9787381696007448
+        ],
+        "d_threshold": 3,
+        "d_continuous": 2.730230260293279,
+        "final_variance": 0.9787381696007448
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.14569997661783196,
+        "mean_value": 0.07995418522801657
+      }
+    },
+    {
+      "state_name": "product",
+      "n_qubits": 8,
+      "geometry": "chain",
+      "seed": null,
+      "entanglement_type": "none",
+      "S_ent": -0.0,
+      "purity": 1.0,
+      "d_topo": 7,
+      "d_mds": 1.0,
+      "d_isomap": 1.0,
+      "d_quantum": 1.0,
+      "delta": 0.8571428571428571,
+      "mi_mean": 0.0,
+      "mi_max": 0.0,
+      "mi_min": 0.0,
+      "mds_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "isomap_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.0,
+        "mean_value": 0.0
+      }
+    },
+    {
+      "state_name": "ghz",
+      "n_qubits": 8,
+      "geometry": "chain",
+      "seed": null,
+      "entanglement_type": "global",
+      "S_ent": 1.0,
+      "purity": 0.9999999999999996,
+      "d_topo": 7,
+      "d_mds": 1.0,
+      "d_isomap": 1.0,
+      "d_quantum": 1.0,
+      "delta": 0.8571428571428571,
+      "mi_mean": 1.0,
+      "mi_max": 1.0,
+      "mi_min": 1.0,
+      "mds_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "isomap_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 1.0,
+        "mean_value": 1.0
+      }
+    },
+    {
+      "state_name": "w",
+      "n_qubits": 8,
+      "geometry": "chain",
+      "seed": null,
+      "entanglement_type": "symmetric",
+      "S_ent": 1.0,
+      "purity": 0.9999999999999999,
+      "d_topo": 7,
+      "d_mds": 1.0,
+      "d_isomap": 1.0,
+      "d_quantum": 1.0,
+      "delta": 0.8571428571428571,
+      "mi_mean": 0.27585076194006003,
+      "mi_max": 0.2758507619400601,
+      "mi_min": 0.2758507619400601,
+      "mds_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "isomap_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.2758507619400601,
+        "mean_value": 0.27585076194006003
+      }
+    },
+    {
+      "state_name": "cluster",
+      "n_qubits": 8,
+      "geometry": "chain",
+      "seed": null,
+      "entanglement_type": "topological_1d",
+      "S_ent": 1.0000000000000007,
+      "purity": 0.9999999999999996,
+      "d_topo": 7,
+      "d_mds": 1.7532881306354113,
+      "d_isomap": 6.0,
+      "d_quantum": 3.8766440653177057,
+      "delta": 0.44619370495461347,
+      "mi_mean": 0.07142857142857183,
+      "mi_max": 0.9999999999999998,
+      "mi_min": 4.440892098500626e-16,
+      "mds_details": {
+        "explained_variances": [
+          0.7884615384615384,
+          0.9365303278162532,
+          0.9796257383391674,
+          0.9933696001657807,
+          0.9999980707759469,
+          0.9999975301848035,
+          0.9999974042139749
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.7532881306354113,
+        "final_variance": 0.9999974042139749
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.6331933699596671,
+          0.7810078422540548,
+          0.7989580035738855,
+          0.8263218038695973,
+          0.8263218038695973,
+          0.8263218038695973
+        ],
+        "d_threshold": 6,
+        "d_continuous": 6.0,
+        "final_variance": 0.8263218038695973
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.9999999999999998,
+        "mean_value": 0.07142857142857183
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 8,
+      "geometry": "chain",
+      "seed": 0,
+      "entanglement_type": "random",
+      "S_ent": 3.338638408064316,
+      "purity": 1.0,
+      "d_topo": 7,
+      "d_mds": 1.9622832376362986,
+      "d_isomap": 6.0,
+      "d_quantum": 3.981141618818149,
+      "delta": 0.43126548302597867,
+      "mi_mean": 0.02329007258020732,
+      "mi_max": 0.07402471734816629,
+      "mi_min": 0.0018954699264468466,
+      "mds_details": {
+        "explained_variances": [
+          0.7505027317742304,
+          0.9058595564374,
+          0.9600890490549044,
+          0.982190036280809,
+          0.9890018075010562,
+          0.9950960692529349,
+          0.9999974219553905
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.9622832376362986,
+        "final_variance": 0.9999974219553905
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.7337401926418674,
+          0.761920688940563,
+          0.7216032883209972,
+          0.7467332237537347,
+          0.7434952143389872,
+          0.7434952143389872
+        ],
+        "d_threshold": 6,
+        "d_continuous": 6.0,
+        "final_variance": 0.7434952143389872
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.07402471734816629,
+        "mean_value": 0.02329007258020732
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 8,
+      "geometry": "chain",
+      "seed": 1,
+      "entanglement_type": "random",
+      "S_ent": 3.294140777121397,
+      "purity": 0.9999999999999998,
+      "d_topo": 7,
+      "d_mds": 1.9622117201526557,
+      "d_isomap": 1439581497739826.0,
+      "d_quantum": 719790748869914.0,
+      "delta": -102827249838558.14,
+      "mi_mean": 0.024042896002083987,
+      "mi_max": 0.04524921527229964,
+      "mi_min": 0.0031446243470640844,
+      "mds_details": {
+        "explained_variances": [
+          0.7508316509657214,
+          0.9058581860931598,
+          0.9607068033487333,
+          0.981870917436569,
+          0.9889571926394122,
+          0.9950229790032581,
+          0.999997353562053
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.9622117201526557,
+        "final_variance": 0.999997353562053
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.7335465245343404,
+          0.7592523476901801,
+          0.7197671158394907,
+          0.7431012614474466,
+          0.7401743475384883,
+          0.7401743475384884
+        ],
+        "d_threshold": 6,
+        "d_continuous": 1439581497739826.0,
+        "final_variance": 0.7401743475384884
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.04524921527229964,
+        "mean_value": 0.024042896002083987
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 8,
+      "geometry": "chain",
+      "seed": 2,
+      "entanglement_type": "random",
+      "S_ent": 3.306003719157202,
+      "purity": 0.9999999999999998,
+      "d_topo": 7,
+      "d_mds": 1.9637781417829825,
+      "d_isomap": 6.0,
+      "d_quantum": 3.981889070891491,
+      "delta": 0.4311587041583584,
+      "mi_mean": 0.02712520786907489,
+      "mi_max": 0.059874591082794915,
+      "mi_min": 0.0084550408196582,
+      "mds_details": {
+        "explained_variances": [
+          0.750962227334941,
+          0.9056013151122797,
+          0.960746649178387,
+          0.9818926142902239,
+          0.9890744868616201,
+          0.9949231828125684,
+          0.9999973488635319
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.9637781417829825,
+        "final_variance": 0.9999973488635319
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.6543231979442662,
+          0.8227118046034139,
+          0.7492368100554148,
+          0.6840385803446687,
+          0.6840385803446686,
+          0.0
+        ],
+        "d_threshold": 6,
+        "d_continuous": 6.0,
+        "final_variance": 0.0
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.059874591082794915,
+        "mean_value": 0.02712520786907489
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 8,
+      "geometry": "chain",
+      "seed": 3,
+      "entanglement_type": "random",
+      "S_ent": 3.3356774440740944,
+      "purity": 1.0,
+      "d_topo": 7,
+      "d_mds": 1.9686584486495293,
+      "d_isomap": 6.0,
+      "d_quantum": 3.9843292243247648,
+      "delta": 0.4308101108107479,
+      "mi_mean": 0.02608862499943135,
+      "mi_max": 0.05054916152165223,
+      "mi_min": 0.008973560198939134,
+      "mds_details": {
+        "explained_variances": [
+          0.7513918215421244,
+          0.9048083107753109,
+          0.9601483191625323,
+          0.9822482045568184,
+          0.9890928417011612,
+          0.9949575833191889,
+          0.9999971837326372
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.9686584486495293,
+        "final_variance": 0.9999971837326372
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.6897362388253081,
+          0.7064934905035649,
+          0.6650913300358472,
+          0.6694530014075262,
+          0.6437619952131393,
+          0.6437619952131393
+        ],
+        "d_threshold": 6,
+        "d_continuous": 6.0,
+        "final_variance": 0.6437619952131393
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.05054916152165223,
+        "mean_value": 0.02608862499943135
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 8,
+      "geometry": "chain",
+      "seed": 4,
+      "entanglement_type": "random",
+      "S_ent": 3.2901265863041775,
+      "purity": 0.9999999999999998,
+      "d_topo": 7,
+      "d_mds": 1.9645874560409575,
+      "d_isomap": 6.0,
+      "d_quantum": 3.982293728020479,
+      "delta": 0.43110089599707446,
+      "mi_mean": 0.020861626908459115,
+      "mi_max": 0.05133791413860722,
+      "mi_min": 0.005674016814083194,
+      "mds_details": {
+        "explained_variances": [
+          0.751742557896552,
+          0.9054429208599626,
+          0.9604162976799122,
+          0.9816121731077188,
+          0.9889728471813862,
+          0.9949020434080312,
+          0.9999972884134326
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.9645874560409575,
+        "final_variance": 0.9999972884134326
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.6529819577817155,
+          0.7573256384131846,
+          0.7185477909646538,
+          0.7272358724957726,
+          0.72201806552204,
+          0.7220180655220398
+        ],
+        "d_threshold": 6,
+        "d_continuous": 6.0,
+        "final_variance": 0.7220180655220398
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.05133791413860722,
+        "mean_value": 0.020861626908459115
+      }
+    },
+    {
+      "state_name": "cluster",
+      "n_qubits": 8,
+      "geometry": "2x4",
+      "seed": null,
+      "entanglement_type": "topological_2d",
+      "S_ent": 3.999999999999996,
+      "purity": 0.9999999999999996,
+      "d_topo": 3,
+      "d_mds": 1.0,
+      "d_isomap": 1.0,
+      "d_quantum": 1.0,
+      "delta": 0.6666666666666666,
+      "mi_mean": 4.440892098500626e-16,
+      "mi_max": 4.440892098500626e-16,
+      "mi_min": 4.440892098500626e-16,
+      "mds_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "isomap_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 4.440892098500626e-16,
+        "mean_value": 4.440892098500626e-16
+      }
+    },
+    {
+      "state_name": "cluster",
+      "n_qubits": 9,
+      "geometry": "3x3",
+      "seed": null,
+      "entanglement_type": "topological_2d",
+      "S_ent": 2.9999999999999987,
+      "purity": 0.9999999999999996,
+      "d_topo": 5,
+      "d_mds": 1.0,
+      "d_isomap": 1.0,
+      "d_quantum": 1.0,
+      "delta": 0.8,
+      "mi_mean": 0.0,
+      "mi_max": 0.0,
+      "mi_min": 0.0,
+      "mds_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "isomap_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.0,
+        "mean_value": 0.0
+      }
+    },
+    {
+      "state_name": "product",
+      "n_qubits": 10,
+      "geometry": "chain",
+      "seed": null,
+      "entanglement_type": "none",
+      "S_ent": -0.0,
+      "purity": 1.0,
+      "d_topo": 9,
+      "d_mds": 1.0,
+      "d_isomap": 1.0,
+      "d_quantum": 1.0,
+      "delta": 0.8888888888888888,
+      "mi_mean": 0.0,
+      "mi_max": 0.0,
+      "mi_min": 0.0,
+      "mds_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "isomap_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.0,
+        "mean_value": 0.0
+      }
+    },
+    {
+      "state_name": "ghz",
+      "n_qubits": 10,
+      "geometry": "chain",
+      "seed": null,
+      "entanglement_type": "global",
+      "S_ent": 1.0,
+      "purity": 0.9999999999999996,
+      "d_topo": 9,
+      "d_mds": 1.0,
+      "d_isomap": 1.0,
+      "d_quantum": 1.0,
+      "delta": 0.8888888888888888,
+      "mi_mean": 1.0,
+      "mi_max": 1.0,
+      "mi_min": 1.0,
+      "mds_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "isomap_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 1.0,
+        "mean_value": 1.0
+      }
+    },
+    {
+      "state_name": "w",
+      "n_qubits": 10,
+      "geometry": "chain",
+      "seed": null,
+      "entanglement_type": "symmetric",
+      "S_ent": 1.0,
+      "purity": 0.9999999999999999,
+      "d_topo": 9,
+      "d_mds": 1.0,
+      "d_isomap": 1.0,
+      "d_quantum": 1.0,
+      "delta": 0.8888888888888888,
+      "mi_mean": 0.21606309229120038,
+      "mi_max": 0.21606309229120035,
+      "mi_min": 0.21606309229120035,
+      "mds_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "isomap_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.21606309229120035,
+        "mean_value": 0.21606309229120038
+      }
+    },
+    {
+      "state_name": "cluster",
+      "n_qubits": 10,
+      "geometry": "chain",
+      "seed": null,
+      "entanglement_type": "topological_1d",
+      "S_ent": 1.0000000000000002,
+      "purity": 0.9999999999999996,
+      "d_topo": 9,
+      "d_mds": 1.9302404568469536,
+      "d_isomap": 8.0,
+      "d_quantum": 4.965120228423476,
+      "delta": 0.44831997461961376,
+      "mi_mean": 0.04444444444444464,
+      "mi_max": 1.0,
+      "mi_min": 0.0,
+      "mds_details": {
+        "explained_variances": [
+          0.7488372093023256,
+          0.9113358295085894,
+          0.9639609086038647,
+          0.9830260244753296,
+          0.9920028762162207,
+          0.9964599888618482,
+          0.9999963918460573,
+          0.999996612697696,
+          0.9999962951267185
+        ],
+        "d_threshold": 2,
+        "d_continuous": 1.9302404568469536,
+        "final_variance": 0.9999962951267185
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.6720815431828637,
+          0.7180918382986206,
+          0.6810575880610983,
+          0.6815747150625372,
+          0.6815747150625373,
+          0.6815747150625373,
+          0.6815747150625371,
+          0.0
+        ],
+        "d_threshold": 8,
+        "d_continuous": 8.0,
+        "final_variance": 0.0
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 1.0,
+        "mean_value": 0.04444444444444464
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 10,
+      "geometry": "chain",
+      "seed": 0,
+      "entanglement_type": "random",
+      "S_ent": 4.264322331834334,
+      "purity": 1.0000000000000004,
+      "d_topo": 9,
+      "d_mds": 2.164504915067059,
+      "d_isomap": 8.0,
+      "d_quantum": 5.08225245753353,
+      "delta": 0.4353052824962745,
+      "mi_mean": 0.00624052450264157,
+      "mi_max": 0.01416192924882087,
+      "mi_min": 0.002554323353201493,
+      "mds_details": {
+        "explained_variances": [
+          0.7331399314741125,
+          0.8903292022032223,
+          0.9491164900653235,
+          0.9719104234289505,
+          0.9848236187972049,
+          0.9892074199008959,
+          0.9933501135114968,
+          0.9969056094715737,
+          0.9999963870595175
+        ],
+        "d_threshold": 3,
+        "d_continuous": 2.164504915067059,
+        "final_variance": 0.9999963870595175
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.6714265925152411,
+          0.6463716045794811,
+          0.4835408700592523,
+          0.3995405464251386,
+          0.3568876041419121,
+          0.3568876041419118,
+          0.0,
+          0.0
+        ],
+        "d_threshold": 8,
+        "d_continuous": 8.0,
+        "final_variance": 0.0
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.01416192924882087,
+        "mean_value": 0.00624052450264157
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 10,
+      "geometry": "chain",
+      "seed": 1,
+      "entanglement_type": "random",
+      "S_ent": 4.261926748516033,
+      "purity": 1.0000000000000002,
+      "d_topo": 9,
+      "d_mds": 2.166909006753419,
+      "d_isomap": 8.0,
+      "d_quantum": 5.08345450337671,
+      "delta": 0.43517172184703223,
+      "mi_mean": 0.006953529842550897,
+      "mi_max": 0.014310288626535828,
+      "mi_min": 0.0027527638716615677,
+      "mds_details": {
+        "explained_variances": [
+          0.7332921517541939,
+          0.8901631766474323,
+          0.949098422527243,
+          0.9718908691108805,
+          0.984791427431045,
+          0.9892156802597611,
+          0.9934012148274918,
+          0.9969154450184349,
+          0.9999960822586041
+        ],
+        "d_threshold": 3,
+        "d_continuous": 2.166909006753419,
+        "final_variance": 0.9999960822586041
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.6637462113540422,
+          0.715102000253482,
+          0.60456501167991,
+          0.49364119178488297,
+          0.4272798296121475,
+          0.4143051582500248,
+          0.41430515825002456,
+          0.0
+        ],
+        "d_threshold": 8,
+        "d_continuous": 8.0,
+        "final_variance": 0.0
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.014310288626535828,
+        "mean_value": 0.006953529842550897
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 10,
+      "geometry": "chain",
+      "seed": 2,
+      "entanglement_type": "random",
+      "S_ent": 4.24237953300931,
+      "purity": 1.0000000000000007,
+      "d_topo": 9,
+      "d_mds": 2.1656421342836203,
+      "d_isomap": 8.0,
+      "d_quantum": 5.08282106714181,
+      "delta": 0.43524210365091,
+      "mi_mean": 0.00664552158097123,
+      "mi_max": 0.017653887470312712,
+      "mi_min": 0.001282086075762301,
+      "mds_details": {
+        "explained_variances": [
+          0.7337135804992325,
+          0.8902347041027513,
+          0.9491888822741587,
+          0.9718672310722234,
+          0.98480380105127,
+          0.9891994232328135,
+          0.9933736459699063,
+          0.9969047046244693,
+          0.9999961406561719
+        ],
+        "d_threshold": 3,
+        "d_continuous": 2.1656421342836203,
+        "final_variance": 0.9999961406561719
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.6086165097487227,
+          0.6881141323010151,
+          0.6082812301357,
+          0.543973612519517,
+          0.5146581482348975,
+          0.5057852627600836,
+          0.5057852627600834,
+          0.0
+        ],
+        "d_threshold": 8,
+        "d_continuous": 8.0,
+        "final_variance": 0.0
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.017653887470312712,
+        "mean_value": 0.00664552158097123
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 10,
+      "geometry": "chain",
+      "seed": 3,
+      "entanglement_type": "random",
+      "S_ent": 4.276309372668836,
+      "purity": 1.0000000000000004,
+      "d_topo": 9,
+      "d_mds": 2.1646924880927627,
+      "d_isomap": 8.0,
+      "d_quantum": 5.082346244046382,
+      "delta": 0.4352948617726243,
+      "mi_mean": 0.00681717148834123,
+      "mi_max": 0.01611001906363385,
+      "mi_min": 0.000908393640969285,
+      "mds_details": {
+        "explained_variances": [
+          0.7335531108958765,
+          0.8903242711188957,
+          0.94907454560412,
+          0.9717334025464219,
+          0.9848334613551681,
+          0.9891601010230948,
+          0.9933364208608134,
+          0.99684798878613,
+          0.9999963862913137
+        ],
+        "d_threshold": 3,
+        "d_continuous": 2.1646924880927627,
+        "final_variance": 0.9999963862913137
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.6993663032920989,
+          0.7660550473684865,
+          0.6421752594058524,
+          0.4814546399210907,
+          0.38047826941804963,
+          0.32332973518142283,
+          0.3233297351814225,
+          0.0
+        ],
+        "d_threshold": 8,
+        "d_continuous": 8.0,
+        "final_variance": 0.0
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.01611001906363385,
+        "mean_value": 0.00681717148834123
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 10,
+      "geometry": "chain",
+      "seed": 4,
+      "entanglement_type": "random",
+      "S_ent": 4.275544524245603,
+      "purity": 1.0,
+      "d_topo": 9,
+      "d_mds": 2.1674981981958927,
+      "d_isomap": 8.0,
+      "d_quantum": 5.083749099097947,
+      "delta": 0.435138988989117,
+      "mi_mean": 0.005604107831474309,
+      "mi_max": 0.01502469677153373,
+      "mi_min": 0.0011671000879167615,
+      "mds_details": {
+        "explained_variances": [
+          0.7334545009359394,
+          0.89013047014116,
+          0.9490536703017814,
+          0.9718000147017176,
+          0.9847670655548009,
+          0.9891563869330274,
+          0.9933258105670504,
+          0.9968676419759642,
+          0.9999963819826464
+        ],
+        "d_threshold": 3,
+        "d_continuous": 2.1674981981958927,
+        "final_variance": 0.9999963819826464
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.6734753523162593,
+          0.6966502566611673,
+          0.5780620661664281,
+          0.46607679326147744,
+          0.4321536569006239,
+          0.4214749415054244,
+          0.42147494150542464,
+          0.0
+        ],
+        "d_threshold": 8,
+        "d_continuous": 8.0,
+        "final_variance": 0.0
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.01502469677153373,
+        "mean_value": 0.005604107831474309
+      }
+    },
+    {
+      "state_name": "ghz",
+      "n_qubits": 12,
+      "geometry": "chain",
+      "seed": null,
+      "entanglement_type": "global",
+      "S_ent": 1.0,
+      "purity": 0.9999999999999996,
+      "d_topo": 11,
+      "d_mds": 1.0,
+      "d_isomap": 1.0,
+      "d_quantum": 1.0,
+      "delta": 0.9090909090909091,
+      "mi_mean": 1.0,
+      "mi_max": 1.0,
+      "mi_min": 1.0,
+      "mds_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "isomap_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 1.0,
+        "mean_value": 1.0
+      }
+    },
+    {
+      "state_name": "cluster",
+      "n_qubits": 12,
+      "geometry": "chain",
+      "seed": null,
+      "entanglement_type": "topological_1d",
+      "S_ent": 1.0000000000000004,
+      "purity": 0.9999999999999981,
+      "d_topo": 11,
+      "d_mds": 2.0865039093784623,
+      "d_isomap": 10.0,
+      "d_quantum": 6.043251954689231,
+      "delta": 0.45061345866461533,
+      "mi_mean": 0.03030303030303049,
+      "mi_max": 1.0,
+      "mi_min": 0.0,
+      "mds_details": {
+        "explained_variances": [
+          0.71875,
+          0.895047988159446,
+          0.9522940927128084,
+          0.9741781892001525,
+          0.9856024835455507,
+          0.9919376502887933,
+          0.9949930318395633,
+          0.9977093010580437,
+          0.9999955931912086,
+          0.9999951366886547
+        ],
+        "d_threshold": 3,
+        "d_continuous": 2.0865039093784623,
+        "final_variance": 0.9999951366886547
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.6919429355277907,
+          0.7057779531191708,
+          0.6198571473827806,
+          0.5329662460794597,
+          0.48987438051205734,
+          0.48722827347360154,
+          0.48722827347360154,
+          0.4872282734736013,
+          0.4872282734736013,
+          0.0
+        ],
+        "d_threshold": 10,
+        "d_continuous": 10.0,
+        "final_variance": 0.0
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 1.0,
+        "mean_value": 0.03030303030303049
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 12,
+      "geometry": "chain",
+      "seed": 0,
+      "entanglement_type": "random",
+      "S_ent": 5.260148091175484,
+      "purity": 0.9999999999999986,
+      "d_topo": 11,
+      "d_mds": 2.333108376024084,
+      "d_isomap": 10.0,
+      "d_quantum": 6.166554188012042,
+      "delta": 0.439404164726178,
+      "mi_mean": 0.0016213582508208442,
+      "mi_max": 0.0031118233274087803,
+      "mi_min": 0.00023112801782665393,
+      "mds_details": {
+        "explained_variances": [
+          0.7222962211663045,
+          0.8793930404409267,
+          0.9412556684691796,
+          0.9658531164525738,
+          0.978203888518384,
+          0.9869947914933075,
+          0.9900224175027277,
+          0.9930798647839542,
+          0.9955268309711359,
+          0.9978591792737557
+        ],
+        "d_threshold": 3,
+        "d_continuous": 2.333108376024084,
+        "final_variance": 0.9978591792737557
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.7014304837675851,
+          0.7319746857497125,
+          0.6588951949610573,
+          0.5522018439218868,
+          0.414397858153595,
+          0.31980181551871434,
+          0.25542285491528316,
+          0.2552987568615531,
+          0.25529875686155334,
+          0.0
+        ],
+        "d_threshold": 10,
+        "d_continuous": 10.0,
+        "final_variance": 0.0
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.0031118233274087803,
+        "mean_value": 0.0016213582508208442
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 12,
+      "geometry": "chain",
+      "seed": 1,
+      "entanglement_type": "random",
+      "S_ent": 5.290303838703256,
+      "purity": 1.0000000000000004,
+      "d_topo": 11,
+      "d_mds": 2.333280719019567,
+      "d_isomap": 10.0,
+      "d_quantum": 6.166640359509783,
+      "delta": 0.4393963309536561,
+      "mi_mean": 0.0016894111304793554,
+      "mi_max": 0.004046519129006665,
+      "mi_min": 0.00015874777043256572,
+      "mds_details": {
+        "explained_variances": [
+          0.722304211395202,
+          0.879377588682636,
+          0.941254589482533,
+          0.9658484777583884,
+          0.9781904708717386,
+          0.9869970601837451,
+          0.9900294292881423,
+          0.9930874730227931,
+          0.9955234149455977,
+          0.997850017369171
+        ],
+        "d_threshold": 3,
+        "d_continuous": 2.333280719019567,
+        "final_variance": 0.997850017369171
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.6886357289161824,
+          0.7302260996039203,
+          0.6134614229487321,
+          0.4585796008073789,
+          0.3010526546088036,
+          0.1546811470470284,
+          0.1070853618702654,
+          0.10708536187026507,
+          0.0,
+          0.0
+        ],
+        "d_threshold": 10,
+        "d_continuous": 10.0,
+        "final_variance": 0.0
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.004046519129006665,
+        "mean_value": 0.0016894111304793554
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 12,
+      "geometry": "chain",
+      "seed": 2,
+      "entanglement_type": "random",
+      "S_ent": 5.278675993555012,
+      "purity": 0.9999999999999978,
+      "d_topo": 11,
+      "d_mds": 2.3328579413916666,
+      "d_isomap": 10.0,
+      "d_quantum": 6.166428970695833,
+      "delta": 0.43941554811856065,
+      "mi_mean": 0.001531660519681623,
+      "mi_max": 0.0038789664693048564,
+      "mi_min": 0.0002741700179218487,
+      "mds_details": {
+        "explained_variances": [
+          0.7222536009398879,
+          0.8794021424500041,
+          0.9412839694656884,
+          0.9658309011185294,
+          0.9781964938733154,
+          0.987005386349296,
+          0.9900328497885044,
+          0.9930881514661031,
+          0.9955183175345111,
+          0.9978463420429587
+        ],
+        "d_threshold": 3,
+        "d_continuous": 2.3328579413916666,
+        "final_variance": 0.9978463420429587
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.692703184949192,
+          0.7400105025884851,
+          0.6118356219956553,
+          0.4581525437799795,
+          0.2898533402920268,
+          0.20047717037674462,
+          0.20047717037674462,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "d_threshold": 10,
+        "d_continuous": 10.0,
+        "final_variance": 0.0
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.0038789664693048564,
+        "mean_value": 0.001531660519681623
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 12,
+      "geometry": "chain",
+      "seed": 3,
+      "entanglement_type": "random",
+      "S_ent": 5.277817458122416,
+      "purity": 1.0000000000000002,
+      "d_topo": 11,
+      "d_mds": 2.3332172818091172,
+      "d_isomap": 10.0,
+      "d_quantum": 6.166608640904559,
+      "delta": 0.43939921446322194,
+      "mi_mean": 0.0016834124354423003,
+      "mi_max": 0.004632972779677447,
+      "mi_min": 0.0002743923838868234,
+      "mds_details": {
+        "explained_variances": [
+          0.7222414498187308,
+          0.8793648114591428,
+          0.9412919372937447,
+          0.9658435715754566,
+          0.978203994419446,
+          0.9870014388435361,
+          0.9900325671490973,
+          0.9930709957306788,
+          0.9955268110836629,
+          0.9978615216013725
+        ],
+        "d_threshold": 3,
+        "d_continuous": 2.3332172818091172,
+        "final_variance": 0.9978615216013725
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.69577391749464,
+          0.7483374134380496,
+          0.585910921179007,
+          0.4506474988534779,
+          0.3451091180795435,
+          0.2718170030453797,
+          0.25601323487422234,
+          0.2560132348742219,
+          0.0,
+          0.0
+        ],
+        "d_threshold": 10,
+        "d_continuous": 10.0,
+        "final_variance": 0.0
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.004632972779677447,
+        "mean_value": 0.0016834124354423003
+      }
+    },
+    {
+      "state_name": "random",
+      "n_qubits": 12,
+      "geometry": "chain",
+      "seed": 4,
+      "entanglement_type": "random",
+      "S_ent": 5.273571796526538,
+      "purity": 0.9999999999999994,
+      "d_topo": 11,
+      "d_mds": 2.332849350423406,
+      "d_isomap": 10.0,
+      "d_quantum": 6.166424675211703,
+      "delta": 0.4394159386171179,
+      "mi_mean": 0.0016306678894054884,
+      "mi_max": 0.005182760103642492,
+      "mi_min": 0.0003811351727176504,
+      "mds_details": {
+        "explained_variances": [
+          0.7222673569312827,
+          0.8793998511323827,
+          0.9412901592895493,
+          0.9658477998634006,
+          0.9781976416448716,
+          0.9870107374945446,
+          0.99003413766901,
+          0.9930884643224152,
+          0.9955365656992307,
+          0.9978585180951645
+        ],
+        "d_threshold": 3,
+        "d_continuous": 2.332849350423406,
+        "final_variance": 0.9978585180951645
+      },
+      "isomap_details": {
+        "explained_variances": [
+          0.6875266814701957,
+          0.7067046197868782,
+          0.5825593833595176,
+          0.39603938996817956,
+          0.2334264109967189,
+          0.1770979256627666,
+          0.17142785891361034,
+          0.17142785891361012,
+          0.0,
+          0.0
+        ],
+        "d_threshold": 10,
+        "d_continuous": 10.0,
+        "final_variance": 0.0
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 0.005182760103642492,
+        "mean_value": 0.0016306678894054884
+      }
+    },
+    {
+      "state_name": "cluster",
+      "n_qubits": 12,
+      "geometry": "3x4",
+      "seed": null,
+      "entanglement_type": "topological_2d",
+      "S_ent": 3.999999999999996,
+      "purity": 0.9999999999999981,
+      "d_topo": 5,
+      "d_mds": 1.0,
+      "d_isomap": 1.0,
+      "d_quantum": 1.0,
+      "delta": 0.8,
+      "mi_mean": 2.0522304394586226e-16,
+      "mi_max": 2.220446049250313e-16,
+      "mi_min": 0.0,
+      "mds_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "isomap_details": {
+        "explained_variances": [
+          1.0
+        ],
+        "d_threshold": 1,
+        "d_continuous": 1.0,
+        "final_variance": 1.0,
+        "degenerate": true
+      },
+      "mi_validation": {
+        "is_symmetric": true,
+        "is_nonnegative": "True",
+        "diagonal_zero": true,
+        "max_reasonable": "True",
+        "min_value": 0.0,
+        "max_value": 2.220446049250313e-16,
+        "mean_value": 2.0522304394586226e-16
+      }
+    }
+  ],
+  "predictions": {
+    "P1": {
+      "name": "Product State Baseline",
+      "threshold": "|delta| < 0.1",
+      "measured": 0.8888888888888888,
+      "passed": false
+    },
+    "P2": {
+      "name": "GHZ Compression",
+      "threshold": "delta > 0.4",
+      "measured": 0.8243578643578644,
+      "passed": "True"
+    },
+    "P3": {
+      "name": "Cluster State Topology",
+      "threshold": "d_Q < 1.5",
+      "measured": 3.535951873433607,
+      "passed": "False"
+    },
+    "P4": {
+      "name": "Random State Compression",
+      "threshold": "delta > 0.25",
+      "measured": 0.4723077272786423,
+      "passed": "True"
+    },
+    "P5": {
+      "name": "Entanglement-Compression Correlation",
+      "threshold": "r > 0.7",
+      "measured": -0.5258037441344035,
+      "p_value": 0.00041476064156317386,
+      "passed": "False"
+    },
+    "P6": {
+      "name": "2D Holographic Prediction",
+      "threshold": "d_Q < 1.5",
+      "measured": 1.0,
+      "passed": "True"
+    }
+  },
+  "validation": {
+    "product_state_max_mi": 0.0,
+    "max_pure_state_entropy": 0.0,
+    "min_mi_value": 0.0,
+    "ghz_mi_mean": 1.0
+  },
+  "summary": {
+    "total_tests": 46,
+    "successful_tests": 46,
+    "failed_tests": 0,
+    "predictions_passed": 3,
+    "predictions_total": 6
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "experiment": "04-quantum-mutual-information",
+  "title": "Quantum Mutual Information and Dimensional Compression",
+  "created": "2026-01-30",
+  "predictions": [
+    {
+      "id": "P1",
+      "description": "Product State Baseline",
+      "claim": "Product states show no compression (no correlations = no compression)",
+      "metric": "absolute_delta",
+      "threshold": 0.1,
+      "threshold_type": "less_than",
+      "source_path": "output/metrics.json",
+      "source_key": "predictions.P1.measured"
+    },
+    {
+      "id": "P2",
+      "description": "GHZ Compression",
+      "claim": "GHZ states with global entanglement show significant compression",
+      "metric": "delta",
+      "threshold": 0.4,
+      "threshold_type": "greater_than",
+      "source_path": "output/metrics.json",
+      "source_key": "predictions.P2.measured"
+    },
+    {
+      "id": "P3",
+      "description": "Cluster State Topology",
+      "claim": "1D cluster states have d_Q matching 1D structure",
+      "metric": "d_Q",
+      "threshold": 1.5,
+      "threshold_type": "less_than",
+      "source_path": "output/metrics.json",
+      "source_key": "predictions.P3.measured"
+    },
+    {
+      "id": "P4",
+      "description": "Random State Compression",
+      "claim": "Haar-random states show compression due to high entanglement",
+      "metric": "delta",
+      "threshold": 0.25,
+      "threshold_type": "greater_than",
+      "source_path": "output/metrics.json",
+      "source_key": "predictions.P4.measured"
+    },
+    {
+      "id": "P5",
+      "description": "Entanglement-Compression Correlation",
+      "claim": "Compression correlates with entanglement entropy",
+      "metric": "pearson_r",
+      "threshold": 0.7,
+      "threshold_type": "greater_than",
+      "source_path": "output/metrics.json",
+      "source_key": "predictions.P5.measured"
+    },
+    {
+      "id": "P6",
+      "description": "2D Holographic Prediction",
+      "claim": "For 2D lattice with strong entanglement, d_Q approaches boundary dimension",
+      "metric": "d_Q",
+      "threshold": 1.5,
+      "threshold_type": "less_than",
+      "source_path": "output/metrics.json",
+      "source_key": "predictions.P6.measured"
+    }
+  ],
+  "success_criteria": {
+    "full_success": "6/6 predictions pass",
+    "strong_success": "5/6 predictions pass",
+    "partial_success": "4/6 predictions pass",
+    "failure": "0-1/6 predictions pass"
+  },
+  "critical_predictions": ["P1", "P2", "P5"]
+}
