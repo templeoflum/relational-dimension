@@ -1,0 +1,169 @@
+{
+  "experiment": "05-calibrated-foundations",
+  "gates": [
+    {
+      "id": "G1",
+      "name": "Unit Tests Pass",
+      "phase": "pre-execution",
+      "type": "automated",
+      "command": "pytest src/tests/ -v",
+      "pass_criterion": "exit code 0",
+      "blocking": true
+    },
+    {
+      "id": "G2",
+      "name": "Calibration Gate C1 - 2D Lattice",
+      "phase": "phase1",
+      "type": "automated",
+      "source_path": "output/phase1/calibration_results.json",
+      "source_key": "lattice_2d.delta_mean",
+      "threshold_abs": 0.05,
+      "blocking": true,
+      "failure_action": "STOP - Do not proceed to Phase 2"
+    },
+    {
+      "id": "G3",
+      "name": "Calibration Gate C2 - 3D Lattice",
+      "phase": "phase1",
+      "type": "automated",
+      "source_path": "output/phase1/calibration_results.json",
+      "source_key": "lattice_3d.delta_mean",
+      "threshold_abs": 0.05,
+      "blocking": true,
+      "failure_action": "STOP - Do not proceed to Phase 2"
+    },
+    {
+      "id": "G4",
+      "name": "Calibration Gate C3 - 1D Chain",
+      "phase": "phase1",
+      "type": "automated",
+      "source_path": "output/phase1/calibration_results.json",
+      "source_key": "chain_1d.delta_mean",
+      "threshold_abs": 0.05,
+      "blocking": true,
+      "failure_action": "STOP - Do not proceed to Phase 2"
+    },
+    {
+      "id": "G5",
+      "name": "Calibration Gate C4 - Method Agreement",
+      "phase": "phase1",
+      "type": "automated",
+      "source_path": "output/phase1/calibration_results.json",
+      "source_key": "method_agreement.max_diff",
+      "threshold": 0.3,
+      "blocking": true,
+      "failure_action": "STOP - Methods do not converge"
+    },
+    {
+      "id": "G6",
+      "name": "Calibration Gate C5 - Reproducibility",
+      "phase": "phase1",
+      "type": "automated",
+      "source_path": "output/phase1/calibration_results.json",
+      "source_key": "reproducibility.max_std",
+      "threshold": 0.03,
+      "blocking": true,
+      "failure_action": "STOP - Results not reproducible"
+    },
+    {
+      "id": "G7",
+      "name": "Phase 1 Mandatory Outputs",
+      "phase": "phase1",
+      "type": "automated",
+      "check": "file_exists",
+      "files": [
+        "output/phase1/calibration_results.json",
+        "output/phase1/calibration_gate_status.json",
+        "reports/lattice_2d_embedding.png",
+        "reports/lattice_3d_embedding.png",
+        "reports/method_comparison.png"
+      ],
+      "blocking": true,
+      "failure_action": "Mark experiment incomplete"
+    },
+    {
+      "id": "G8",
+      "name": "Phase 2 Mandatory Outputs",
+      "phase": "phase2",
+      "type": "automated",
+      "check": "file_exists",
+      "files": [
+        "output/phase2/compression_results.json",
+        "reports/compression_by_condition.png",
+        "reports/effect_ordering.png",
+        "reports/error_curves.png"
+      ],
+      "blocking": true,
+      "failure_action": "Mark experiment incomplete"
+    },
+    {
+      "id": "G9",
+      "name": "Phase 3 Mandatory Outputs",
+      "phase": "phase3",
+      "type": "automated",
+      "check": "file_exists",
+      "files": [
+        "output/phase3/effect_size_analysis.json",
+        "reports/power_curve.png",
+        "reports/confidence_intervals.png"
+      ],
+      "blocking": true,
+      "failure_action": "Mark experiment incomplete"
+    },
+    {
+      "id": "G10",
+      "name": "Sample Exclusion Rate Check",
+      "phase": "all",
+      "type": "automated",
+      "source_path": "output/phase1/calibration_results.json",
+      "source_key": "method_agreement.exclusion_rate",
+      "threshold": 0.2,
+      "blocking": false,
+      "failure_action": "WARNING - High exclusion rate, investigate methodology"
+    },
+    {
+      "id": "G11",
+      "name": "Visual Verification - Embeddings",
+      "phase": "phase1",
+      "type": "manual",
+      "description": "Verify 2D/3D lattice embeddings look correct (grid structure visible)",
+      "artifacts": [
+        "reports/lattice_2d_embedding.png",
+        "reports/lattice_3d_embedding.png"
+      ],
+      "required_for": "paper"
+    },
+    {
+      "id": "G12",
+      "name": "Visual Verification - Compression",
+      "phase": "phase2",
+      "type": "manual",
+      "description": "Verify compression plot shows expected ordering (boost > decay > noise)",
+      "artifacts": [
+        "reports/compression_by_condition.png",
+        "reports/effect_ordering.png"
+      ],
+      "required_for": "paper"
+    },
+    {
+      "id": "G13",
+      "name": "Paper Compilation",
+      "phase": "final",
+      "type": "automated",
+      "command": "cd paper && pdflatex main.tex",
+      "pass_criterion": "exit code 0, PDF generated",
+      "required_for": "publication"
+    }
+  ],
+  "execution_order": {
+    "phase1": ["G1", "G2", "G3", "G4", "G5", "G6", "G7", "G11"],
+    "phase2": ["G8", "G12"],
+    "phase3": ["G9"],
+    "final": ["G10", "G13"]
+  },
+  "blocking_logic": {
+    "description": "Phase 2 only executes if ALL of G2-G6 pass",
+    "phase1_gates": ["G2", "G3", "G4", "G5", "G6"],
+    "phase1_requires": "all_pass"
+  }
+}

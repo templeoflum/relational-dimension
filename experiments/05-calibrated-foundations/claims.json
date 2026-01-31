@@ -1,0 +1,186 @@
+{
+  "experiment": "05-calibrated-foundations",
+  "version": "1.0",
+  "locked": true,
+  "lock_date": "2026-01-31",
+  "lock_note": "These thresholds are PRE-REGISTERED and will NOT be adjusted regardless of results",
+  "phases": {
+    "phase1": {
+      "name": "Calibration",
+      "blocking": true,
+      "predictions": [
+        {
+          "id": "P1.1",
+          "description": "2D lattice calibration - matched topology/correlation recovers d=2",
+          "metric": "abs(delta_2d)",
+          "threshold": 0.05,
+          "operator": "<",
+          "rationale": "Ground truth d=2 must be recovered within ±0.05"
+        },
+        {
+          "id": "P1.2",
+          "description": "3D lattice calibration - matched topology/correlation recovers d=3",
+          "metric": "abs(delta_3d)",
+          "threshold": 0.05,
+          "operator": "<",
+          "rationale": "Ground truth d=3 must be recovered within ±0.05"
+        },
+        {
+          "id": "P1.3",
+          "description": "1D chain calibration - matched topology/correlation recovers d=1",
+          "metric": "abs(delta_1d)",
+          "threshold": 0.05,
+          "operator": "<",
+          "rationale": "Ground truth d=1 must be recovered within ±0.05"
+        },
+        {
+          "id": "P1.4",
+          "description": "Method agreement - Isomap and MDS converge",
+          "metric": "max_method_diff",
+          "threshold": 0.3,
+          "operator": "<",
+          "rationale": "Methods must agree within 0.3 dimensions"
+        },
+        {
+          "id": "P1.5",
+          "description": "Reproducibility - low variance across replications",
+          "metric": "max_std_delta",
+          "threshold": 0.03,
+          "operator": "<",
+          "rationale": "Standard deviation must be below 0.03 for reliability"
+        }
+      ]
+    },
+    "phase2": {
+      "name": "Compression Tests",
+      "blocking": false,
+      "requires": ["phase1"],
+      "predictions": [
+        {
+          "id": "P2.1",
+          "description": "Global correlation boost creates compression",
+          "metric": "delta_boost",
+          "threshold": 0.1,
+          "operator": ">",
+          "rationale": "Uniform correlation addition should reduce effective dimension"
+        },
+        {
+          "id": "P2.2",
+          "description": "Random noise control shows no compression",
+          "metric": "abs(delta_noise)",
+          "threshold": 0.05,
+          "operator": "<",
+          "rationale": "Random noise should not create systematic compression"
+        },
+        {
+          "id": "P2.3",
+          "description": "Distance-decay correlation creates compression",
+          "metric": "delta_decay",
+          "threshold": 0.05,
+          "operator": ">",
+          "rationale": "Long-range correlation should create some compression"
+        },
+        {
+          "id": "P2.4",
+          "description": "Effect ordering: boost > decay > noise",
+          "metric": "ordering_correct",
+          "threshold": true,
+          "operator": "==",
+          "rationale": "Stronger correlation modification should produce more compression"
+        }
+      ]
+    },
+    "phase3": {
+      "name": "Effect Size Estimation",
+      "blocking": false,
+      "requires": ["phase2"],
+      "predictions": [
+        {
+          "id": "P3.1",
+          "description": "Effect size is measurable",
+          "metric": "cohens_d",
+          "threshold": 0.3,
+          "operator": ">",
+          "rationale": "Small but real effect (Cohen's d > 0.3)"
+        },
+        {
+          "id": "P3.2",
+          "description": "Reasonable sample size achievable",
+          "metric": "n_required_power80",
+          "threshold": 100,
+          "operator": "<",
+          "rationale": "Should be able to achieve power=0.8 with N<100"
+        }
+      ]
+    }
+  },
+  "calibration_gates": [
+    {
+      "id": "C1",
+      "description": "2D lattice δ within tolerance",
+      "criterion": "abs(delta_2d_mean) < 0.05",
+      "blocking": true
+    },
+    {
+      "id": "C2",
+      "description": "3D lattice δ within tolerance",
+      "criterion": "abs(delta_3d_mean) < 0.05",
+      "blocking": true
+    },
+    {
+      "id": "C3",
+      "description": "1D chain δ within tolerance",
+      "criterion": "abs(delta_1d_mean) < 0.05",
+      "blocking": true
+    },
+    {
+      "id": "C4",
+      "description": "Method agreement across all samples",
+      "criterion": "all(abs(d_isomap - d_mds) < 0.3)",
+      "blocking": true
+    },
+    {
+      "id": "C5",
+      "description": "Reproducibility across replications",
+      "criterion": "all(std(delta) < 0.03)",
+      "blocking": true
+    }
+  ],
+  "method_agreement_gate": {
+    "description": "Exclude samples where Isomap and MDS disagree",
+    "threshold": 0.5,
+    "action": "exclude_sample",
+    "max_exclusion_rate": 0.2,
+    "note": "If >20% samples excluded, investigate methodology"
+  },
+  "mandatory_outputs": {
+    "phase1": [
+      "output/phase1/calibration_results.json",
+      "output/phase1/calibration_gate_status.json",
+      "reports/lattice_2d_embedding.png",
+      "reports/lattice_3d_embedding.png",
+      "reports/method_comparison.png"
+    ],
+    "phase2": [
+      "output/phase2/compression_results.json",
+      "reports/compression_by_condition.png",
+      "reports/effect_ordering.png",
+      "reports/error_curves.png"
+    ],
+    "phase3": [
+      "output/phase3/effect_size_analysis.json",
+      "reports/power_curve.png",
+      "reports/confidence_intervals.png"
+    ]
+  },
+  "distance_transformations": {
+    "candidates": [
+      {"name": "sqrt", "formula": "D = sqrt(2 * (1 - C))"},
+      {"name": "linear", "formula": "D = 1 - C"},
+      {"name": "arccos", "formula": "D = arccos(C)"},
+      {"name": "neglog", "formula": "D = -log(C + epsilon)"}
+    ],
+    "selection_criterion": "Choose transformation achieving C1-C3 calibration",
+    "fallback": "If none achieve calibration, report fundamental limitation"
+  }
+}
