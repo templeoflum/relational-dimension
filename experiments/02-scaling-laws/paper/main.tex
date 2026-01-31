@@ -1,26 +1,61 @@
-\documentclass[11pt]{article}
-\usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amssymb}
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
 
-\title{Experiment 02: Compression Scaling Laws}
-\author{Relational Dimension Project}
-\date{\today}
+\title{Compression Scaling Laws:\\
+How Does Dimensional Compression Scale with Graph Size?\\[0.5em]
+\large A Falsifiable Experiment Report}
+
+\author{Experiment 02 --- Relational Dimension Project}
+\date{January 30, 2026}
 
 \begin{document}
+
 \maketitle
 
 \begin{abstract}
-Building on Experiment 01's finding that compression ratio scales with graph size (ratio 3.11 for N=200/50), this experiment investigates the functional form of compression scaling. We test logarithmic ($\delta = a \log N + b$) and power law ($\delta = c N^\alpha$) models across graph sizes N=50 to N=1000. Results show logarithmic scaling fits better ($R^2 = 0.81$) than power law ($R^2 = 0.63$) for N$\leq$500, but methodological transitions at larger N complicate extrapolation testing.
+Building on Experiment 01's finding that compression ratio scales with graph size (ratio 3.11 for $N=200/50$), we investigate the functional form of compression scaling. We test logarithmic ($\delta = a \log N + b$) and power law ($\delta = c N^\alpha$) models across graph sizes $N = 50$ to $N = 1000$, with 60 total configurations. We formalize six falsifiable predictions with pre-specified thresholds. Results show that logarithmic scaling fits better ($R^2 = 0.81$) than power law ($R^2 = 0.63$) for $N \leq 500$, but a methodological transition to sparse methods at larger $N$ introduces a discontinuity that invalidates extrapolation tests. \textbf{All 6 predictions failed}, primarily due to this methodological artifact. However, within the consistent-method range ($N = 50$--$500$), scaling behavior is evident and approximately logarithmic. We discuss implications and propose methodological refinements.
 \end{abstract}
 
 \section{Introduction}
 
-Experiment 01 established that long-range (LR) correlations produce measurable compression of correlation-based distances relative to topological distances. The compression ratio $\delta = (d_{topo} - d_{corr}) / d_{topo}$ increased from 0.108 at N=50 to 0.336 at N=200, yielding a scaling ratio of 3.11.
+Experiment 01 established that long-range (LR) correlations produce measurable compression of correlation-based distances relative to topological distances. The compression ratio $\delta = (d_{\text{topo}} - d_{\text{corr}}) / d_{\text{topo}}$ increased from 0.108 at $N=50$ to 0.336 at $N=200$, yielding a scaling ratio of 3.11---the only prediction that passed in Experiment 01.
 
-This experiment asks: \textbf{What is the functional form of this scaling, and does it predict behavior at unseen graph sizes?}
+\subsection{Research Question}
+
+This experiment asks: \textbf{What is the functional form of compression scaling, and does it predict behavior at unseen graph sizes?}
+
+Understanding the scaling law has both theoretical and practical implications:
+\begin{itemize}
+    \item \textbf{Theoretical:} Logarithmic scaling would suggest information-theoretic limits; power-law scaling would suggest geometric origins
+    \item \textbf{Practical:} A validated scaling law enables prediction of compression at scales too costly to measure directly
+\end{itemize}
+
+\subsection{Key Findings from Experiment 01}
+
+\begin{table}[h]
+\centering
+\caption{Experiment 01 results motivating this study}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+N & $\delta$ (RGG-LR) & $\delta$ (RGG-NN) & Ratio to $N=50$ \\
+\midrule
+50 & 0.108 & 0.070 & 1.00 \\
+100 & 0.296 & 0.233 & 2.74 \\
+200 & 0.336 & 0.410 & 3.11 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The effect appears real but requires larger $N$ to manifest clearly.
 
 \section{Methods}
 
@@ -29,80 +64,133 @@ This experiment asks: \textbf{What is the functional form of this scaling, and d
 We extend Experiment 01's threshold-based dimension detection with continuous (fractional) dimension estimation:
 
 \begin{enumerate}
-    \item Compute reconstruction error curve $e(k)$ for $k = 1, \ldots, k_{max}$
-    \item Find dimension where error drops below threshold $\tau \cdot e(1)$
-    \item Use linear interpolation between integer dimensions for fractional estimate
+    \item Compute reconstruction error curve $e(k)$ for $k = 1, \ldots, k_{\max}$
+    \item Find dimension where error drops below threshold $\tau \cdot e(1)$ (where $\tau = 0.1$, same as Exp01)
+    \item Use \textbf{linear interpolation} between integer dimensions for fractional estimate
 \end{enumerate}
 
-This approach maintains consistency with Experiment 01 while providing smoother dimension estimates.
+This maintains consistency with Experiment 01's error-based approach while providing smoother dimension estimates that should reduce variance.
 
 \subsection{Sparse Methods for Large N}
 
-For graphs with N $>$ 500, we employ:
-\begin{itemize}
-    \item \textbf{Landmark MDS}: Select 200 random landmarks, embed with classical MDS, project remaining points via distance-weighted interpolation
-    \item \textbf{Sparse Isomap}: Use k-nearest neighbor graph (k=15) instead of full distance matrix
-\end{itemize}
+For graphs with $N > 500$, full distance matrices become computationally expensive. We employ:
+
+\paragraph{Landmark MDS} Select 200 random landmarks, embed with classical MDS, project remaining points via inverse-distance-weighted interpolation.
+
+\paragraph{Sparse Isomap} Use $k$-nearest neighbor graph ($k=15$) instead of full distance matrix for geodesic estimation.
+
+\textbf{Critical Note:} As results will show, this methodological transition introduces artifacts that compromise cross-scale comparisons.
 
 \subsection{Test Matrix}
 
 \begin{table}[h]
 \centering
-\begin{tabular}{ccc}
+\caption{Test matrix for scaling analysis}
+\begin{tabular}{@{}cccc@{}}
 \toprule
-N & Replications & Method \\
+N & Replications & Method & Purpose \\
 \midrule
-50 & 10 & Full \\
-100 & 10 & Full \\
-200 & 10 & Full \\
-300 & 10 & Full \\
-500 & 10 & Full \\
-750 & 5 & Sparse \\
-1000 & 5 & Sparse \\
+50 & 10 & Full & Anchor to Exp01 \\
+100 & 10 & Full & Anchor to Exp01 \\
+200 & 10 & Full & Anchor to Exp01 \\
+300 & 10 & Full & New data point \\
+500 & 10 & Full & Training set boundary \\
+750 & 5 & Sparse & Test set \\
+1000 & 5 & Sparse & Extrapolation test \\
 \bottomrule
 \end{tabular}
-\caption{Test matrix for scaling analysis. Total: 60 configurations.}
 \end{table}
+
+Total: 60 configurations. Correlation type: LR only (the pattern showing scaling signal in Exp01).
 
 \subsection{Model Fitting}
 
-We fit two models to the scaling data:
+We fit two candidate scaling models:
 
-\textbf{Logarithmic:} $\delta(N) = a \log(N) + b$
+\paragraph{Logarithmic Model}
+\[
+\delta(N) = a \log(N) + b
+\]
+Rationale: Many information-theoretic scaling laws are logarithmic.
 
-\textbf{Power Law:} $\delta(N) = c N^\alpha$
+\paragraph{Power Law Model}
+\[
+\delta(N) = c N^\alpha
+\]
+Rationale: Geometric phenomena often exhibit power-law scaling.
 
-Models are fit on N $\leq$ 500 (training set) and evaluated on N $>$ 500 (test set) for predictive validity.
+Models are fit on $N \leq 500$ (training set) using least-squares regression. Predictive validity is tested on $N > 500$.
 
-\section{Results}
+\section{Pre-Registered Predictions}
 
-\subsection{Scaling Data}
+We state six predictions with explicit pass/fail thresholds, determined \emph{before} running the experiment.
 
 \begin{table}[h]
 \centering
-\begin{tabular}{ccc}
+\caption{Pre-registered predictions with falsification criteria}
+\label{tab:predictions}
+\begin{tabular}{@{}llll@{}}
 \toprule
-N & $\delta$ (mean) & $\delta$ (std) \\
+ID & Prediction & Pass Criterion & Rationale \\
 \midrule
-50 & 0.108 & 0.317 \\
-100 & 0.298 & 0.185 \\
-200 & 0.337 & 0.509 \\
-300 & 0.326 & 0.386 \\
-500 & 0.386 & 0.547 \\
-750 & -0.151 & 0.302 \\
-1000 & -0.097 & 0.431 \\
+P1 & Monotonic Scaling & Spearman $r > 0.9$ & Compression should increase with $N$ \\
+P2 & Logarithmic Form & $R^2 > 0.85$ & Log model fits well \\
+P3 & Power Law Form & $R^2 > 0.85$, $\alpha > 0$ & Power model fits well \\
+P4 & Non-Saturation & $\delta_{1000} > \delta_{500} + 0.05$ & Effect continues growing \\
+P5 & Predictive Validity & Relative error $< 20\%$ & Model extrapolates \\
+P6 & Variance Reduction & Std$(\delta)_{N=100} < 0.15$ & Improved method reduces noise \\
 \bottomrule
 \end{tabular}
-\caption{Compression ratio by graph size. Note sign change at N$>$500 where sparse methods are used.}
 \end{table}
 
-\subsection{Model Comparison}
+\paragraph{P1 (Monotonic Scaling)} If compression is real, larger graphs should show more compression. Spearman correlation captures monotonicity regardless of functional form.
 
-For N $\leq$ 500:
-\begin{itemize}
-    \item Logarithmic: $\delta = 0.107 \log(N) - 0.258$, $R^2 = 0.812$
-    \item Power Law: $\delta = 0.022 N^{0.487}$, $R^2 = 0.630$
-\end{itemize}
+\paragraph{P2 \& P3 (Functional Form)} At least one model should fit well. If both fail, the scaling may be more complex (e.g., saturating, piecewise).
+
+\paragraph{P4 (Non-Saturation)} The effect should not plateau prematurely. A saturating effect would suggest finite-size artifacts rather than true scaling.
+
+\paragraph{P5 (Predictive Validity)} The key test: can we predict $\delta(1000)$ from data at $N \leq 500$? A valid scaling law should extrapolate.
+
+\paragraph{P6 (Improved Baseline)} The continuous dimension estimation should reduce variance compared to Exp01's threshold-based approach (which had Std = 0.27 at $N=100$).
+
+\section{Results}
+
+\subsection{Raw Scaling Data}
+
+\begin{table}[h]
+\centering
+\caption{Compression ratio by graph size}
+\begin{tabular}{@{}cccl@{}}
+\toprule
+N & $\delta$ (mean) & $\delta$ (std) & Method \\
+\midrule
+50 & 0.108 & 0.317 & Full \\
+100 & 0.298 & 0.185 & Full \\
+200 & 0.337 & 0.509 & Full \\
+300 & 0.326 & 0.386 & Full \\
+500 & 0.386 & 0.547 & Full \\
+\midrule
+750 & $-0.151$ & 0.302 & Sparse \\
+1000 & $-0.097$ & 0.431 & Sparse \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Critical observation:} There is a sign change at $N > 500$ where sparse methods begin. The negative $\delta$ values indicate $d_{\text{corr}} > d_{\text{topo}}$, the opposite of compression.
+
+\subsection{Model Fitting (Training Set: N $\leq$ 500)}
+
+\paragraph{Logarithmic Model}
+\[
+\delta = 0.107 \log(N) - 0.258
+\]
+$R^2 = 0.812$
+
+\paragraph{Power Law Model}
+\[
+\delta = 0.022 N^{0.487}
+\]
+$R^2 = 0.630$
 
 The logarithmic model provides better fit, approaching but not exceeding the 0.85 threshold.
 
@@ -110,74 +198,171 @@ The logarithmic model provides better fit, approaching but not exceeding the 0.8
 
 \begin{table}[h]
 \centering
-\begin{tabular}{llccc}
+\caption{Prediction outcomes}
+\label{tab:results}
+\begin{tabular}{@{}llccc@{}}
 \toprule
-ID & Description & Threshold & Measured & Status \\
+ID & Description & Threshold & Measured & Result \\
 \midrule
-P1 & Monotonic Scaling & $r > 0.9$ & -0.29 & FAIL \\
-P2 & Logarithmic Form & $R^2 > 0.85$ & 0.81 & FAIL \\
-P3 & Power Law Form & $R^2 > 0.85$ & 0.63 & FAIL \\
-P4 & Non-Saturation & $\Delta\delta > 0.05$ & -0.48 & FAIL \\
-P5 & Predictive Validity & Error $< 20\%$ & 594\% & FAIL \\
-P6 & Variance Reduction & Std $< 0.15$ & 0.19 & FAIL \\
+P1 & Monotonic Scaling & $r > 0.90$ & $-0.29$ & \textbf{FAIL} \\
+P2 & Logarithmic Form & $R^2 > 0.85$ & $0.81$ & \textbf{FAIL} \\
+P3 & Power Law Form & $R^2 > 0.85$ & $0.63$ & \textbf{FAIL} \\
+P4 & Non-Saturation & $\Delta\delta > 0.05$ & $-0.48$ & \textbf{FAIL} \\
+P5 & Predictive Validity & error $< 20\%$ & $594\%$ & \textbf{FAIL} \\
+P6 & Variance Reduction & Std $< 0.15$ & $0.19$ & \textbf{FAIL} \\
+\midrule
+\multicolumn{4}{l}{Predictions passed:} & \textbf{0/6} \\
 \bottomrule
 \end{tabular}
-\caption{Prediction results. All predictions failed, primarily due to methodological discontinuity.}
 \end{table}
+
+\subsection{Analysis of Failures}
+
+\paragraph{P1 Failure: Sign Reversal}
+The Spearman correlation is \emph{negative} ($r = -0.29$) because $\delta$ increases for $N = 50$--$500$ but then \emph{decreases} (becomes negative) for $N = 750$--$1000$. This is clearly a methodological artifact.
+
+\paragraph{P2 Near-Miss}
+The log model achieved $R^2 = 0.81$, just below the 0.85 threshold. Within the $N \leq 500$ range, logarithmic scaling is a reasonable description.
+
+\paragraph{P3 Failure: Power Law Insufficient}
+Power law fit ($R^2 = 0.63$) is substantially worse than logarithmic, suggesting the relationship is not geometric power-law.
+
+\paragraph{P4 \& P5 Catastrophic Failures}
+Both predictions failed catastrophically due to the methodological transition. The model predicted $\delta(1000) \approx 0.48$ but measured $\delta(1000) = -0.10$, a 594\% error with wrong sign.
+
+\paragraph{P6 Failure: Variance Not Reduced}
+The standard deviation at $N=100$ was 0.19, slightly exceeding the 0.15 threshold. The continuous dimension estimation did not substantially reduce variance.
 
 \section{Discussion}
 
-\subsection{Interpretation}
+\subsection{The Methodological Discontinuity Problem}
 
-The results reveal a critical methodological issue: switching from full to sparse methods at N=500 introduces a discontinuity that invalidates cross-method comparisons. Within the full-method range (N=50-500):
+The dominant finding is that switching from full to sparse methods at $N=500$ introduces a discontinuity that invalidates cross-method comparisons. Within the full-method range ($N = 50$--$500$):
 
 \begin{itemize}
-    \item Compression increases with N (consistent with Exp01)
+    \item Compression \emph{does} increase with $N$, consistent with Exp01
     \item Logarithmic scaling provides reasonable fit ($R^2 = 0.81$)
-    \item High variance suggests need for more replications
+    \item Variance remains high, suggesting need for more replications
 \end{itemize}
 
-\subsection{Limitations}
+The sparse methods (Landmark MDS, Sparse Isomap) appear to systematically bias dimension estimates in the opposite direction, producing negative $\delta$.
+
+\subsection{Interpretation Within Consistent Range}
+
+Restricting to $N = 50$--$500$ (full methods only):
+
+\begin{itemize}
+    \item Spearman $r = 0.90$ (exactly at threshold)
+    \item Log model $R^2 = 0.81$ (close to threshold)
+    \item Clear upward trend in compression
+\end{itemize}
+
+The scaling hypothesis is \emph{plausible but not validated} within this range.
+
+\subsection{Why Did Sparse Methods Fail?}
+
+Several factors may explain the discontinuity:
 
 \begin{enumerate}
-    \item \textbf{Sparse method artifact}: The negative $\delta$ values at N$>$500 likely reflect methodological differences rather than true compression reversal
-    \item \textbf{Variance}: Standard deviations exceed means at several sizes, indicating high stochasticity
-    \item \textbf{Sample size}: 5 replications at large N may be insufficient
+    \item \textbf{Landmark sampling bias:} Random landmark selection may not capture the manifold structure
+    \item \textbf{k-NN graph artifacts:} The sparse neighbor graph may distort geodesic distances differently for correlation vs.\ topological metrics
+    \item \textbf{Scale mismatch:} Sparse methods may be calibrated for different regimes than full methods
 \end{enumerate}
 
 \subsection{Recommendations}
 
-For future work:
-\begin{itemize}
-    \item Use consistent methods across all sizes (full methods are feasible up to N=1000)
-    \item Increase replications to 20+ for reliable statistics
-    \item Test intermediate sizes (400, 600, 800) to verify continuity
-\end{itemize}
+\begin{enumerate}
+    \item \textbf{Use consistent methods:} Full Isomap/MDS is computationally feasible up to $N = 1000$ (only 8MB per distance matrix)
+    \item \textbf{Increase replications:} 20+ replications to reduce standard error
+    \item \textbf{Add intermediate sizes:} $N \in \{400, 600, 800\}$ to verify continuity
+    \item \textbf{Calibrate sparse methods:} Before using sparse methods, validate on sizes where both methods can be applied
+\end{enumerate}
 
 \section{Conclusion}
 
-While all pre-registered predictions technically failed, the experiment provides valuable insights:
+We tested whether compression scaling follows logarithmic or power-law forms and whether the scaling law predicts behavior at larger graph sizes. Our pre-registered predictions were falsified:
+
+\begin{itemize}
+    \item \textbf{All 6 predictions failed}
+    \item \textbf{Primary cause:} Methodological discontinuity when switching to sparse methods at $N > 500$
+    \item \textbf{Within consistent range ($N \leq 500$):} Logarithmic scaling is plausible ($R^2 = 0.81$)
+\end{itemize}
+
+The experiment demonstrates both the value and challenge of falsifiable predictions. The pre-registered design forced us to confront the methodological failure directly rather than selectively reporting favorable subsets. The scaling hypothesis remains plausible but requires methodologically consistent replication at larger scales.
+
+\subsection{Key Takeaways}
 
 \begin{enumerate}
-    \item Compression scaling IS present in the N=50-500 range
-    \item Logarithmic scaling ($R^2 = 0.81$) fits better than power law ($R^2 = 0.63$)
-    \item Methodological consistency is critical for cross-size comparisons
+    \item Scaling signal \emph{is} present in $N = 50$--$500$ range
+    \item Logarithmic scaling fits better than power law ($R^2 = 0.81$ vs.\ $0.63$)
+    \item Sparse methods introduce systematic bias incompatible with full methods
+    \item Methodological consistency is essential for cross-scale studies
 \end{enumerate}
 
-The core hypothesis---that compression scales systematically with graph size---remains plausible but requires methodologically consistent replication at larger scales.
+\section*{Data Availability}
 
-\section{Figures}
+All code, data, and analysis artifacts are available in the repository:
+\begin{itemize}
+    \item Source code: \texttt{experiments/02-scaling-laws/src/}
+    \item Raw results: \texttt{experiments/02-scaling-laws/output/metrics.json}
+    \item Figures: \texttt{experiments/02-scaling-laws/reports/*.png}
+\end{itemize}
 
-\begin{figure}[h]
+\section*{Acknowledgments}
+
+This experiment was conducted as part of the Relational Dimension research project, using a falsifiable science methodology where predictions and thresholds are specified before data collection.
+
+\appendix
+
+\section{Detailed Scaling Data}
+
+\begin{table}[h]
 \centering
-\includegraphics[width=0.8\textwidth]{../reports/scaling_curve.png}
-\caption{Compression ratio vs graph size with fitted logarithmic and power law models. Note discontinuity at N=500 where sparse methods begin.}
-\end{figure}
+\caption{Full results by graph size}
+\begin{tabular}{@{}cccccc@{}}
+\toprule
+N & Replications & $\delta$ (mean) & $\delta$ (std) & $\delta$ (min) & $\delta$ (max) \\
+\midrule
+50 & 10 & 0.108 & 0.317 & $-0.42$ & 0.58 \\
+100 & 10 & 0.298 & 0.185 & 0.02 & 0.54 \\
+200 & 10 & 0.337 & 0.509 & $-0.31$ & 0.92 \\
+300 & 10 & 0.326 & 0.386 & $-0.18$ & 0.85 \\
+500 & 10 & 0.386 & 0.547 & $-0.25$ & 0.95 \\
+750 & 5 & $-0.151$ & 0.302 & $-0.51$ & 0.15 \\
+1000 & 5 & $-0.097$ & 0.431 & $-0.62$ & 0.38 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth]{../reports/predictions_summary.png}
-\caption{Summary of prediction evaluations (P1-P6).}
-\end{figure}
+\section{Model Parameters}
+
+\subsection{Logarithmic Model (Training Set)}
+\begin{align*}
+\delta &= a \log(N) + b \\
+a &= 0.1066 \\
+b &= -0.2577 \\
+R^2 &= 0.8123
+\end{align*}
+
+\subsection{Power Law Model (Training Set)}
+\begin{align*}
+\delta &= c N^\alpha \\
+c &= 0.0218 \\
+\alpha &= 0.4869 \\
+R^2 &= 0.6297
+\end{align*}
+
+\section{Prediction at N=1000}
+
+Using the logarithmic model (better fit):
+\[
+\delta_{\text{predicted}}(1000) = 0.1066 \cdot \log(1000) - 0.2577 = 0.479
+\]
+
+Measured: $\delta_{\text{measured}}(1000) = -0.097$
+
+Relative error: $\frac{|0.479 - (-0.097)|}{|-0.097|} = 594\%$
+
+This catastrophic failure is attributable to the methodological transition, not the scaling model itself.
 
 \end{document}
